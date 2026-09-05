@@ -28,7 +28,7 @@
   var EYE_Y = EYE_X / PHI;
 
   var FIB = [1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89, 144, 233, 377, 610, 987, 1597];
-  var LOOPS = 7;                 /* φ-steps travelled over a full page scroll */
+  var LOOPS = 10.5;              /* φ-steps travelled over a full page scroll */
 
   var canvas = document.getElementById('phi-canvas');
   if (!canvas) return;
@@ -36,7 +36,7 @@
   if (!ctx) return;
 
   var W = 0, H = 0, dpr = 1;
-  var zoom = new Motion.Spring(0, { stiffness: 58, damping: 15 });
+  var zoom = new Motion.Spring(0, { stiffness: 72, damping: 16 });
   var detail = new Motion.Spring(0, { stiffness: 42, damping: 16 });
   var px = new Motion.Spring(0, { stiffness: 46, damping: 14 });
   var py = new Motion.Spring(0, { stiffness: 46, damping: 14 });
@@ -59,10 +59,10 @@
     if (a <= 0.004) return;
 
     if (showCut) {
-      ctx.globalAlpha = a * 0.42;
+      ctx.globalAlpha = a * 0.50;
       ctx.beginPath();
       ctx.rect(0, 0, PHI, 1);
-      ctx.moveTo(1, 0);
+      ctx.moveTo(1, 0);          /* the cut that leaves the next golden rectangle */
       ctx.lineTo(1, 1);
       ctx.stroke();
     } else {
@@ -104,11 +104,11 @@
     var frac = z - whole;
 
     /* level counts grow with scroll depth */
-    var inward = Math.round(6 + d * 10);
+    var inward = Math.round(7 + d * 11);
     var outward = Math.round(2 + d * 3);
-    var showCut = d > 0.10;
-    var showNums = d > 0.26;
-    var baseAlpha = 0.21 + d * 0.19;
+    var showCut = true;                  /* the construction, not just the curve */
+    var showNums = d > 0.14;
+    var baseAlpha = 0.30 + d * 0.26;
 
     /* the eye sits on the golden point of the viewport, plus a little
        pointer parallax */
@@ -145,15 +145,15 @@
       ctx.lineWidth = 1.05 / (scale * Math.pow(PHI, outward - k));
       drawUnit(a, showCut);
 
-      if (showNums && sizePx > 70 && sizePx < Math.max(W, H) * 1.5 && a > 0.12) {
+      if (showNums && sizePx > 52 && sizePx < Math.max(W, H) * 1.6 && a > 0.08) {
         try {
           var m = ctx.getTransform();
           labels.push({
             x: (m.a * 0.5 + m.c * 0.5 + m.e) / dpr,
             y: (m.b * 0.5 + m.d * 0.5 + m.f) / dpr,
             n: FIB[(whole + (total - k)) % FIB.length],
-            a: a * (d - 0.26) / 0.74,
-            s: Motion.clamp(sizePx / 26, 9, 15)
+            a: a * Motion.clamp((d - 0.14) / 0.36, 0, 1),
+            s: Motion.clamp(sizePx / 24, 9.5, 17)
           });
         } catch (e) { /* getTransform unsupported — skip the numbers */ }
       }
@@ -172,9 +172,9 @@
       for (var j = 0; j < labels.length; j++) {
         var L = labels[j];
         if (L.x < -60 || L.x > W + 60 || L.y < -40 || L.y > H + 40) continue;
-        ctx.globalAlpha = Motion.clamp(L.a, 0, 1) * 0.85;
+        ctx.globalAlpha = Motion.clamp(L.a, 0, 1) * 0.95;
         ctx.fillStyle = 'rgba(227,219,201,1)';
-        ctx.font = '300 ' + L.s.toFixed(1) + 'px "JetBrains Mono", monospace';
+        ctx.font = L.s.toFixed(1) + 'px "Electrolize", monospace';
         ctx.fillText(String(L.n), L.x, L.y);
       }
       ctx.globalAlpha = 1;

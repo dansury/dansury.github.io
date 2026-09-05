@@ -105,9 +105,10 @@
 
       /* analysis */
       var an = el('div', 'analysis');
-      [['p.problem', c.problem], ['p.solution', c.solution], ['p.audience', c.audience], ['p.value', c.value]]
+      [['p.problem', c.problem], ['p.solution', c.solution], ['p.audience', c.audience],
+       ['p.value', c.value], ['p.reuse', c.reuse]]
         .forEach(function (row) {
-          var r = el('div', 'an');
+          var r = el('div', 'an' + (row[0] === 'p.reuse' ? ' an--reuse' : ''));
           r.appendChild(el('span', 'an__k', t(row[0])));
           r.appendChild(el('p', 'an__v', row[1]));
           an.appendChild(r);
@@ -132,6 +133,24 @@
     n.appendChild(el('span', 'kv__k', k));
     n.appendChild(el('span', 'kv__v', v));
     return n;
+  }
+
+  /* ---------------- facts ---------------- */
+
+  function renderFacts() {
+    var box = $('#facts');
+    if (!box) return;
+    box.innerHTML = '';
+    (S.facts[lang] || S.facts.ru).forEach(function (f) {
+      var d = el('div', 'fact');
+      var dd = el('dd');
+      var v = el('span', 'num', f.v);
+      if (/^\d+$/.test(f.v)) v.dataset.count = f.v;
+      dd.appendChild(v);
+      d.appendChild(dd);
+      d.appendChild(el('dt', null, t(f.k)));
+      box.appendChild(d);
+    });
   }
 
   /* ---------------- stack ---------------- */
@@ -178,10 +197,12 @@
     lang = next;
     applyStatic();
     splitTitle();
+    renderFacts();
     renderProjects();
     renderStack();
     applyFilter(currentFilter, true);
     initReveals();
+    counters();
     try { localStorage.setItem('lang', lang); } catch (e) {}
   }
 
@@ -298,6 +319,7 @@
     } catch (e) {}
 
     applyStatic();
+    renderFacts();
     renderProjects();
     renderStack();
     splitTitle();
