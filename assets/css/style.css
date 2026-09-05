@@ -527,6 +527,7 @@ main{ position:relative; z-index:3 }
   background:var(--paper); color:var(--ink);
 }
 .analysis--light .an{ border-bottom:0; padding-bottom:0 }
+.analysis--light .an:first-child{ opacity:.82 }
 .analysis--light .an__k{ color:var(--ink-mut); opacity:1 }
 .analysis--light .an__v{ color:var(--ink) }
 .an{
