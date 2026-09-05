@@ -14,13 +14,13 @@ window.SITE = (function () {
       'facts.k1': 'продуктов в портфолио',
       'facts.k2': 'операционная рутина: максимальное сокращение',
       'facts.k3': 'от идеи до деплоя — доработка без релиза',
-      'facts.k4': 'проверок в аудите рекламного кабинета',
+      'facts.k4': 'технологии в стеке',
       'portrait.cap': 'Яна Павленко — инженер продукта. Удалённо, часовой пояс UTC+3.',
       'method.title': 'Метод',
       'method.lede': 'Я не «пишу код по задачам». Я довожу требование заказчика до работающей функции — и до того состояния, когда её можно поддерживать без меня.',
       'm1.t': 'Сначала спецификация, потом код',
       'm1.b': 'Каждая функция проходит цикл: спека → план → задачи → реализация. Спека описывает поведение, а не пожелания, — поэтому в проект можно вернуться через год, не перечитывая код.',
-      'm2.t': 'Продукт, а не набор функций',
+      'm2.t': 'Продуктовый подход',
       'm2.b': 'Сначала сегмент и его задача, ценность, юнит-экономика, самое рискованное допущение. Функция, которая не двигает метрику, в план не попадает.',
       'm3.t': 'Внедрение фич одной кнопкой (Experimental)',
       'm3.b': 'Пожелание пишется прямо в админке продукта, задача уходит в GitHub, изменение прогоняется в песочнице этого же продукта и через пять минут готово к работе. Не подошло — откат одним нажатием.',
@@ -33,9 +33,9 @@ window.SITE = (function () {
       'contact.lede': 'Возьмусь за продукт целиком: разберу задачу как продуктовую, напишу спецификацию, соберу, разверну и передам с документацией. Или подключусь к существующей системе — там, где нужно навести порядок.',
       'contact.write': 'Напишите — отвечу сегодня.',
       'p.problem': 'Проблема', 'p.solution': 'Решение', 'p.audience': 'Для кого', 'p.value': 'Что даёт бизнесу',
-      'p.role': 'Роль', 'p.stack': 'Технологии',
+      'p.stack': 'Технологии',
       'p.repo': 'Репозиторий', 'p.repoPrivate': 'Репозиторий (закрыт)',
-      'st.prod': 'в продакшене', 'st.beta': 'открытая бета', 'st.pub': 'опубликовано'
+      'st.prod': 'в продакшене', 'st.beta': 'открытая бета', 'st.closedBeta': 'закрытая бета', 'st.pub': 'опубликовано'
     },
     en: {
       'nav.name': 'Yana Paulenka',
@@ -47,13 +47,13 @@ window.SITE = (function () {
       'facts.k1': 'products shipped',
       'facts.k2': 'operational routine: largest cut achieved',
       'facts.k3': 'from idea to deploy — a change without a release',
-      'facts.k4': 'checks in the ad-account audit',
+      'facts.k4': 'technologies in the stack',
       'portrait.cap': 'Yana Paulenka — product engineer. Remote, UTC+3.',
       'method.title': 'Method',
       'method.lede': 'I do not "write code against tickets". I take a client requirement to a working feature — and to the state where it can be maintained without me.',
       'm1.t': 'Specification first, code second',
       'm1.b': 'Every feature runs the loop: spec → plan → tasks → implementation. The spec describes behaviour, not wishes — so anyone can come back a year later without re-reading the code.',
-      'm2.t': 'A product, not a pile of features',
+      'm2.t': 'A product-first approach',
       'm2.b': 'First the segment and its job, the value, the unit economics, the riskiest assumption. A feature that moves no metric does not enter the plan.',
       'm3.t': 'Features shipped by one button (Experimental)',
       'm3.b': 'The request is typed straight into the product’s admin panel, the task goes to GitHub, the change is tried in that product’s own sandbox and installs five minutes later with a button. Not right? One click rolls it back — the server always holds a specific branch.',
@@ -66,17 +66,17 @@ window.SITE = (function () {
       'contact.lede': 'I can take a product end to end: frame the task as a product problem, write the specification, build it, deploy it and hand it over documented. Or join an existing system where things need to be put in order.',
       'contact.write': 'Write to me — you will get an answer today.',
       'p.problem': 'Problem', 'p.solution': 'Solution', 'p.audience': 'Who it is for', 'p.value': 'Business outcome',
-      'p.role': 'Role', 'p.stack': 'Tech',
+      'p.stack': 'Tech',
       'p.repo': 'Repository', 'p.repoPrivate': 'Repository (private)',
-      'st.prod': 'in production', 'st.beta': 'open beta', 'st.pub': 'published'
+      'st.prod': 'in production', 'st.beta': 'open beta', 'st.closedBeta': 'closed beta', 'st.pub': 'published'
     }
   };
 
   var facts = {
     ru: [{ v: '11', k: 'facts.k1' }, { v: '6 ч → 1 мин', k: 'facts.k2' },
-         { v: '5 мин', k: 'facts.k3' }, { v: '65', k: 'facts.k4' }],
+         { v: '5 мин', k: 'facts.k3' }, { v: '24', k: 'facts.k4' }],
     en: [{ v: '11', k: 'facts.k1' }, { v: '6 h → 1 min', k: 'facts.k2' },
-         { v: '5 min', k: 'facts.k3' }, { v: '65', k: 'facts.k4' }]
+         { v: '5 min', k: 'facts.k3' }, { v: '24', k: 'facts.k4' }]
   };
 
   var stack = {
@@ -107,7 +107,6 @@ window.SITE = (function () {
       ru: {
         name: 'Автосборка КП по входящему email одной кнопкой',
         tag: 'Письмо-запрос → готовое коммерческое предложение',
-        role: 'Продукт, архитектура, разработка',
         problem: 'Менеджер собирал каждое КП руками — часы на ответ и ошибки в ценах.',
         solution: 'Письмо разбирается и классифицируется одним вызовом модели; цены и остатки берутся из каталога, описания — из корпоративной вики. КП с карточками, фото и допродажей собирается кнопкой, push кладёт запрос менеджеру сразу.',
         audience: 'Производство или магазин с потоком B2B-запросов и небольшим отделом продаж.',
@@ -116,7 +115,6 @@ window.SITE = (function () {
       en: {
         name: 'Quotes assembled from an inbound email in one click',
         tag: 'An enquiry email → a finished commercial proposal',
-        role: 'Product, architecture, development',
         problem: 'Every quote was assembled by hand — hours to reply and wrong prices.',
         solution: 'One model call parses and classifies the letter; prices and stock come from the catalogue, descriptions from the company wiki. The quote with cards, photos and upsell is built by a button, and push puts it in front of the manager at once.',
         audience: 'A manufacturer with a flow of B2B enquiries and a small sales team.',
@@ -131,7 +129,6 @@ window.SITE = (function () {
       ru: {
         name: 'Автовёрстка типографской продукции',
         tag: 'Печатный лист этикеток со штрихкодами: 5 часов → 1 минута',
-        role: 'Архитектура, разработка, установка на прод',
         problem: 'Вёрстка партии этикеток занимала до пяти часов и всё равно шла с ошибками.',
         solution: 'Модуль сам собирает печатный лист: Code 128, QR, разметка под резку, готовый PDF. Рядом — реестр серийных номеров, обмен со складом и проверка подлинности покупателем. PDF, штрихкод, QR и ZIP написаны внутри: на хостинге заказчика нет Composer.',
         audience: 'Производитель с серийным учётом продукции и его покупатели.',
@@ -140,7 +137,6 @@ window.SITE = (function () {
       en: {
         name: 'Automatic print layout',
         tag: 'A sheet of barcode labels: 5 hours → 1 minute',
-        role: 'Architecture, development, production install',
         problem: 'Laying out a batch of labels took up to five hours and still shipped with errors.',
         solution: 'The module composes the print sheet itself: Code 128, QR, cut marks, a finished PDF. Alongside it — a serial-number registry, warehouse exchange and buyer-side authenticity checks. PDF, barcode, QR and ZIP are written inside the module: the client’s hosting has no Composer.',
         audience: 'A manufacturer with serial-numbered products, and its buyers.',
@@ -155,7 +151,6 @@ window.SITE = (function () {
       ru: {
         name: 'Бот-диетолог: анализ еды по датчику глюкозы',
         tag: 'Дневник, который отвечает, от чего лично у вас скачет сахар',
-        role: 'Продукт, архитектура, разработка',
         problem: 'Носитель монитора глюкозы видит скачки, но не знает, какая еда их вызывает.',
         solution: 'Фото тарелки, скриншот сенсора и голосовая отметка сводятся на общую шкалу времени. Через две-три недели бот отвечает числами: «после яблок у вас подъём +3.2 против +1.4, 11 наблюдений, достоверность высокая».',
         audience: 'Люди на непрерывном мониторинге глюкозы и их врачи.',
@@ -164,7 +159,6 @@ window.SITE = (function () {
       en: {
         name: 'A diet bot that reads food against your glucose sensor',
         tag: 'A diary that answers what personally spikes your glucose',
-        role: 'Product, architecture, development',
         problem: 'People wearing a glucose monitor see the spikes but not which food caused them.',
         solution: 'A photo of the plate, a screenshot of the sensor and a voice note are aligned on one timeline. Two or three weeks in, the bot answers with numbers: "apples raise you +3.2 against +1.4, 11 observations, high confidence."',
         audience: 'People on continuous glucose monitoring and their doctors.',
@@ -179,7 +173,6 @@ window.SITE = (function () {
       ru: {
         name: 'Маршрутная ERP с внутренним telegram',
         tag: 'Маршруты, склад и внутренний «телеграм» в одном веб-приложении',
-        role: 'Продукт, архитектура, разработка, спецификации',
         problem: 'Маршруты и учет материалов жили в Excel, а переписка по клиентам — в личных мессенджерах сотрудников.',
         solution: 'Карта клиентов с автосборкой маршрута, расчёт выдачи материалов, статусы и журнал аудита. На карточке клиента — общая лента как в телеграме: текст, фото, видео, голосовые с расшифровкой, push. Вход по вечной персональной ссылке: у полевых сотрудников нет корпоративной почты.',
         audience: 'Оптовый поставщик с выездными представителями.',
@@ -188,7 +181,6 @@ window.SITE = (function () {
       en: {
         name: 'Field ERP with auto-routing',
         tag: 'Routes, stock and an in-house "Telegram" inside one web app',
-        role: 'Product, architecture, development, specifications',
         problem: 'Routes lived in Excel and client conversations lived in employees’ personal messengers.',
         solution: 'A client map with auto-assembled routes, material-issue calculation, statuses and an audit log. Every client card carries a shared thread that behaves like Telegram: text, photos, video, voice notes with transcription, push. Sign-in is a permanent personal link — field staff have no corporate email.',
         audience: 'A wholesaler with field sales representatives.',
@@ -201,22 +193,20 @@ window.SITE = (function () {
       live: 'https://neuropro.skywood.club/?utm_src=dangh', liveLabel: 'neuropro.skywood.club',
       tech: ['PHP 8.4 без Composer', 'SQLite', 'Yandex Vision OCR', 'OpenRouter / Yandex LLM', 'SVG', 'SMTP'],
       ru: {
-        name: 'NeuroPro',
+        name: 'Генератор психофизиологических отчётов',
         tag: 'Отчёт по психофизиологическому тесту: считает код, пишет нейросеть',
-        role: 'Продукт, архитектура, разработка, конституция проекта',
         problem: 'Специалист тратил час на отчёт, а качество зависело от того, кто его писал.',
-        solution: 'Код считает все показатели и строит радиальную диаграмму и матрицу; модель получает готовые числа и пишет брендированный PDF с психологическим отчётом, адаптированным под типаж клиента. На выходе брендированный PDF или письмо.',
+        solution: 'Код считает все показатели и строит радиальную диаграмму и матрицу; модель получает готовые числа и пишет брендированный PDF с психологическим отчётом, адаптированным под meta-профиль клиента. На выходе брендированный PDF, отправленный по email.',
         audience: 'Психологи и HR-специалисты на оборудовании «Эгоскоп».',
-        value: 'Час работы превращается в минуты, и отчёт защитим перед профессионалом: каждое число посчитал код, а не модель.'
+        value: 'Час работы превращается в минуты, а отчёт — той глубины детализации, которая подходит клиенту.'
       },
       en: {
-        name: 'NeuroPro',
+        name: 'Psychophysiological Report Generator',
         tag: 'A psychophysiological report: code computes, the model writes',
-        role: 'Product, architecture, development, project constitution',
         problem: 'An expert spent an hour per report, and the quality depended on who wrote it.',
-        solution: 'Code computes every metric and renders the radar chart and the matrix; the model receives finished numbers and writes in two layers — content first, then language. Output is a branded PDF or an email.',
+        solution: 'Code computes every metric and renders the radar chart and the matrix; the model receives finished numbers and writes a branded PDF report adapted to the client’s meta-profile. Output is a branded PDF sent by email.',
         audience: 'Psychologists and HR specialists working with Egoscope hardware.',
-        value: 'An hour of work becomes minutes, and the report survives professional scrutiny: every number came from code, not a model.'
+        value: 'An hour of work becomes minutes, and the report matches exactly the level of detail the client needs.'
       }
     },
     {
@@ -227,7 +217,6 @@ window.SITE = (function () {
       ru: {
         name: 'CareerHack · Executive Matrix',
         tag: 'Воронка консалтинга: резюме → бесплатный индекс → платный отчёт',
-        role: 'Продукт, архитектура, разработка, деплой',
         problem: 'Эксперт тратил час на каждого лида ещё до того, как понимал, готов ли тот платить.',
         solution: 'Посетитель загружает резюме и бесплатно получает «Индекс карьерной автономии», дальше — платный отчёт и запись на личный разбор. Вокруг: письма, рефералы, кабинет оператора, SEO.',
         audience: 'Эксперт с личным брендом, который продаёт консалтинг.',
@@ -236,7 +225,6 @@ window.SITE = (function () {
       en: {
         name: 'CareerHack · Executive Matrix',
         tag: 'A consulting funnel: CV → free index → paid report',
-        role: 'Product, architecture, development, deployment',
         problem: 'The expert spent an hour on every lead before knowing whether they would pay.',
         solution: 'The visitor uploads a CV and gets the free "Career Autonomy Index", then the paid report and a personal session. Around it: email flows, referrals, an operator console, SEO.',
         audience: 'An expert with a personal brand selling consulting.',
@@ -244,14 +232,13 @@ window.SITE = (function () {
       }
     },
     {
-      id: 'expertunpack', cat: ['ai'], year: '2024 — 2026', status: 'prod',
+      id: 'expertunpack', cat: ['ai'], year: '2024 — 2026', status: 'closedBeta',
       repo: 'https://github.com/dansury/expertunpack_bot', priv: true,
       live: 'https://t.me/expertunpack_bot?utm_src=dangh', liveLabel: '@expertunpack_bot',
       tech: ['Python', 'aiogram', 'SQLite', 'LLM', 'ASR', 'Telegram Payments'],
       ru: {
         name: 'ExpertUnpack',
         tag: 'Бот распаковывает эксперта вместо методолога',
-        role: 'Продукт, архитектура, разработка',
         problem: 'Распаковка эксперта — часы интервью и календарь одного методолога.',
         solution: 'Бот ведёт по методологии, принимает ответ текстом, голосом или файлом и собирает из профиля оффер, кейсы и тексты для продаж. Две ценовые ступени, оплата внутри диалога.',
         audience: 'Эксперты, консультанты и наставники.',
@@ -260,7 +247,6 @@ window.SITE = (function () {
       en: {
         name: 'ExpertUnpack',
         tag: 'A bot that unpacks an expert instead of a methodologist',
-        role: 'Product, architecture, development',
         problem: 'Unpacking an expert means hours of interviews and one methodologist’s calendar.',
         solution: 'The bot walks the methodology, accepts text, voice or files, and assembles the offer, the cases and the sales copy from the profile. Two price tiers, paid inside the chat.',
         audience: 'Experts, consultants and mentors.',
@@ -268,14 +254,13 @@ window.SITE = (function () {
       }
     },
     {
-      id: 'growth', cat: ['ai'], year: '2026', status: 'beta',
+      id: 'growth', cat: ['ai'], year: '2026', status: 'closedBeta',
       repo: 'https://github.com/dansury/Growth_Producer', priv: false,
       live: 'https://t.me/GrowthProducer_bot?utm_src=dangh', liveLabel: '@GrowthProducer_bot',
       tech: ['Python', 'LLM', 'ASR / OCR', 'граф заметок', '9 площадок'],
       ru: {
         name: 'Growth Producer',
         tag: 'Продюсер канала: от базы знаний до постов в девяти площадках',
-        role: 'Продукт, архитектура, разработка',
         problem: 'У эксперта есть знания, но нет регулярности: три поста в первую неделю, тишина в третью.',
         solution: 'Присланное — текст, голос, файлы, видео — ложится в связанный граф заметок; из него собирается контент-план, а один смысл раскладывается в посты под девять площадок. Публикация — после кнопки «Подтвердить».',
         audience: 'Эксперты и малый бизнес, которые ведут канал сами.',
@@ -284,7 +269,6 @@ window.SITE = (function () {
       en: {
         name: 'Growth Producer',
         tag: 'A channel producer: from knowledge base to posts on nine platforms',
-        role: 'Product, architecture, development',
         problem: 'The expert has the knowledge but no cadence: three posts in week one, silence by week three.',
         solution: 'Everything sent in — text, voice, files, video — lands in a linked graph of notes; a content plan is built from it and one idea is rewritten for nine platforms. Nothing goes out until Confirm is pressed.',
         audience: 'Experts and small businesses running their own channel.',
@@ -299,7 +283,6 @@ window.SITE = (function () {
       ru: {
         name: 'Директолог как ИИ-агент',
         tag: 'Аудит по 65 проверкам, юнит-экономика, автопилот кабинета',
-        role: 'Архитектура, разработка, справочники и бенчмарки',
         problem: 'Кабинет сливает бюджет на настройках по умолчанию, а аудит делают раз в квартал.',
         solution: '65 проверок с грейдом и планом исправлений, предельная ставка из юнит-экономики, кампания из одного JSON идемпотентно, правила оптимизации и офлайн-продажи из CRM в аналитику. Sandbox и dry-run включены по умолчанию.',
         audience: 'Владельцы рекламных кабинетов и агентства.',
@@ -308,7 +291,6 @@ window.SITE = (function () {
       en: {
         name: 'An ads specialist as an AI agent',
         tag: 'A 65-point audit, unit economics, autopilot for the account',
-        role: 'Architecture, development, reference data and benchmarks',
         problem: 'The account burns budget on default settings, and the audit happens quarterly.',
         solution: '65 checks with a grade and a fix plan, the maximum bid derived from unit economics, a campaign built from one JSON idempotently, optimisation rules and offline CRM sales pushed into analytics. Sandbox and dry-run are on by default.',
         audience: 'Ad-account owners and agencies.',
@@ -323,7 +305,6 @@ window.SITE = (function () {
       ru: {
         name: 'LLM-тулкит для PHP-хостинга',
         tag: 'Нейросети, OCR и разбор документов на обычном shared-хостинге',
-        role: 'Архитектура, разработка, спецификации',
         problem: 'Надо внедрить нейросети на дешёвом shared-хостинге.',
         solution: 'Два провайдера — Yandex Cloud и OpenRouter — за одним интерфейсом с цепочкой фолбэков, разбор PDF и DOCX с деградацией в vision-модели и OCR, SMTP и настройки из админки. Нужны только cURL, SQLite и ZIP.',
         audience: 'Владельцы сервисов на обычном PHP-хостинге.',
@@ -332,7 +313,6 @@ window.SITE = (function () {
       en: {
         name: 'LLM toolkit for PHP hosting',
         tag: 'AI, OCR and document parsing on ordinary shared hosting',
-        role: 'Architecture, development, specifications',
         problem: 'AI has to run on cheap shared hosting.',
         solution: 'Two providers — Yandex Cloud and OpenRouter — behind one interface with a fallback chain, PDF and DOCX parsing degrading into vision models and OCR, SMTP and settings from an admin page. Only cURL, SQLite and ZIP required.',
         audience: 'Owners of services on ordinary PHP hosting.',
@@ -347,7 +327,6 @@ window.SITE = (function () {
       ru: {
         name: 'Автодеплой с GitHub',
         tag: 'Обновление прода одним PHP-файлом — без git, SSH и доступа к серверу',
-        role: 'Идея, разработка, документация',
         problem: 'Код в GitHub, а на хостинге только FTP — перенос вручную ломается.',
         solution: 'Один PHP-файл скачивает ZIP выбранной ветки и раскладывает нужную папку рядом с собой. При каждом обновлении репозитория возможна автоподгрузка — прод обновляется сам, без участия человека.',
         audience: 'Владельцы сайтов на shared-хостинге и их разработчики.',
@@ -356,7 +335,6 @@ window.SITE = (function () {
       en: {
         name: 'Auto-deploy from GitHub',
         tag: 'Production updated by one PHP file — no git, no SSH, no server access',
-        role: 'Idea, development, documentation',
         problem: 'The code is on GitHub and the hosting has only FTP — copying by hand breaks.',
         solution: 'One PHP file downloads the ZIP of a chosen branch and lays the right folder next to itself. It can pull automatically on every push to the repository, so production updates itself.',
         audience: 'Owners of sites on shared hosting and their developers.',
