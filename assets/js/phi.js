@@ -6,11 +6,17 @@
  *     step  =  translate(φ,0) · rotate(90°) · scale(1/φ)
  *
  * Applying that step forever converges on the "eye" of the spiral — the one
- * point the transform leaves in place. We anchor the eye to the golden point
- * of the viewport, then let scrolling drive two things:
+ * point the transform leaves in place. Four steps make a full turn, so
+ *
+ *     step⁴  =  scale(1/φ⁴)
+ *
+ * is a pure scale about the eye: the whole figure repeats every four steps
+ * without any rotation. That is what lets the construction stay square to the
+ * page at every scroll position. We anchor the eye to the golden point of the
+ * viewport, then let scrolling drive two things:
  *
  *   zoom   — a continuous fall into the eye. One page of scroll ≈ LOOPS
- *            whole φ-steps; the level window shifts by one every step, so the
+ *            whole φ-steps; the level window slides inward with it, so the
  *            figure is self-similar and never runs out.
  *   detail — how many levels are drawn, whether the square subdivisions and
  *            the Fibonacci numbers appear. The deeper you scroll, the more
@@ -27,8 +33,10 @@
   var EYE_X = PHI / (1 + 1 / (PHI * PHI));
   var EYE_Y = EYE_X / PHI;
 
-  var FIB = [1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89, 144, 233, 377, 610, 987, 1597];
+  var FIB = [1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89, 144, 233, 377, 610, 987, 1597, 2584, 4181];
   var LOOPS = 10.5;              /* φ-steps travelled over a full page scroll */
+  var TURN = 4;                  /* φ-steps in a full turn — the figure's period */
+  var LABEL0 = 17;               /* Fibonacci index of the square the fall starts on */
 
   var canvas = document.getElementById('phi-canvas');
   if (!canvas) return;
@@ -101,6 +109,23 @@
   }
 
 
+  /* the step from one golden rectangle to the next, and its inverse */
+  function stepIn() {
+    ctx.translate(PHI, 0);
+    ctx.rotate(HALF_PI);
+    ctx.scale(1 / PHI, 1 / PHI);
+  }
+  function stepOut() {
+    ctx.scale(PHI, PHI);
+    ctx.rotate(-HALF_PI);
+    ctx.translate(-PHI, 0);
+  }
+
+  /* clamped, not wrapped: the sequence must never jump from 1 back to 4181 */
+  function fibAt(i) {
+    return FIB[Math.max(0, Math.min(FIB.length - 1, i))];
+  }
+
   /* how visible a level is, judged by its size on screen, not by its index —
      that is what makes the level window shift seamlessly */
   function levelAlpha(sizePx, base) {
@@ -118,8 +143,9 @@
 
     var d = Motion.clamp(detail.current, 0, 1);
     var z = zoom.current;
-    var whole = Math.floor(z);
-    var frac = z - whole;
+    var period = Math.floor(z / TURN) * TURN;
+    var frac = z - period;               /* 0..4 — one whole turn of the figure */
+    var lead = Math.floor(frac);         /* whole steps already fallen through */
 
     /* level counts grow with scroll depth */
     var inward = Math.round(7 + d * 11);
@@ -135,7 +161,6 @@
 
     var unit = (Math.max(W, H) * 1.45) / PHI;
     var scale = unit * Math.pow(PHI, frac);
-    var rot = -HALF_PI * frac - 0.06;
 
     ctx.lineCap = 'round';
     ctx.lineJoin = 'round';
@@ -144,20 +169,19 @@
 
     ctx.save();
     ctx.translate(ax, ay);
-    ctx.rotate(rot);
-    ctx.scale(scale, scale);
+    ctx.scale(scale, scale);          /* no rotation: the squares stay square to the page */
     ctx.translate(-EYE_X, -EYE_Y);
 
-    /* climb outward first — the eye is invariant, so nothing drifts */
-    for (var i = 0; i < outward; i++) {
-      ctx.scale(PHI, PHI);
-      ctx.rotate(-HALF_PI);
-      ctx.translate(-PHI, 0);
-    }
+    /* walk to the largest level to draw. The eye is invariant, so nothing
+       drifts; `lead` slides the window inward as the turn scales up, which
+       keeps the outermost square the same size on screen throughout */
+    var up = outward - lead;
+    for (var i = 0; i < up; i++) stepOut();
+    for (var i2 = 0; i2 > up; i2--) stepIn();
 
     var total = outward + inward;
     for (var k = 0; k < total; k++) {
-      var sizePx = scale * Math.pow(PHI, outward - k);
+      var sizePx = scale * Math.pow(PHI, up - k);
       var a = levelAlpha(sizePx, baseAlpha);
       drawUnit(a, showCut, sizePx);
 
@@ -167,16 +191,14 @@
           labels.push({
             x: (m.a * 0.5 + m.c * 0.5 + m.e) / dpr,
             y: (m.b * 0.5 + m.d * 0.5 + m.f) / dpr,
-            n: FIB[(whole + (total - k)) % FIB.length],
+            n: fibAt(LABEL0 - (period + lead + k - outward)),  /* rides with its square */
             a: a * Motion.clamp((d - 0.14) / 0.36, 0, 1),
             s: Motion.clamp(sizePx / 24, 9.5, 17)
           });
         } catch (e) { /* getTransform unsupported — skip the numbers */ }
       }
 
-      ctx.translate(PHI, 0);
-      ctx.rotate(HALF_PI);
-      ctx.scale(1 / PHI, 1 / PHI);
+      stepIn();
     }
     ctx.restore();
 
