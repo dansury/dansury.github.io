@@ -54,34 +54,52 @@
     dirty = true;
   }
 
-  /* one golden rectangle: outline, the cut, the quarter-turn of the spiral */
-  function drawUnit(a, showCut) {
+  var ARC = 'rgba(227,219,201,1)';
+  var DOT = 'rgba(226,220,205,1)';
+  var TAU = Math.PI * 2;
+  var ARC_W = 1.7;      /* the shell is the thickest line on screen */
+  var DOT_R = 0.72;     /* dots stay thinner than the shell */
+  var DOT_STEP = 12;    /* screen px between dots */
+  var DOT_MAX = 96;
+
+  /* one edge, drawn as dots that fade out toward its corners.
+     s = screen pixels per local unit, so dots keep their size at any depth */
+  function dottedEdge(x0, y0, x1, y1, a, s) {
+    var lenPx = Math.hypot(x1 - x0, y1 - y0) * s;
+    if (lenPx < 7) return;
+    var n = Math.min(DOT_MAX, Math.max(3, Math.round(lenPx / DOT_STEP)));
+    var r = DOT_R / s;
+    for (var i = 0; i <= n; i++) {
+      var t = i / n;
+      var f = Math.pow(Math.sin(Math.PI * t), 0.9);   /* the gradient to the corners */
+      if (f < 0.05) continue;
+      ctx.globalAlpha = a * f;
+      ctx.beginPath();
+      ctx.arc(x0 + (x1 - x0) * t, y0 + (y1 - y0) * t, r * (0.5 + 0.5 * f), 0, TAU);
+      ctx.fill();
+    }
+  }
+
+  /* one golden rectangle: dotted outline, the cut, the quarter-turn of the spiral */
+  function drawUnit(a, showCut, s) {
     if (a <= 0.004) return;
 
-    if (showCut) {
-      ctx.globalAlpha = a * 0.50;
-      ctx.beginPath();
-      ctx.rect(0, 0, PHI, 1);
-      ctx.moveTo(1, 0);          /* the cut that leaves the next golden rectangle */
-      ctx.lineTo(1, 1);
-      ctx.stroke();
-    } else {
-      ctx.globalAlpha = a * 0.30;
-      ctx.beginPath();
-      ctx.rect(0, 0, PHI, 1);
-      ctx.stroke();
-    }
+    ctx.fillStyle = DOT;
+    var e = a * 0.68;
+    dottedEdge(0, 0, PHI, 0, e, s);
+    dottedEdge(PHI, 0, PHI, 1, e, s);
+    dottedEdge(PHI, 1, 0, 1, e, s);
+    dottedEdge(0, 1, 0, 0, e, s);
+    if (showCut) dottedEdge(1, 0, 1, 1, e * 0.8, s);   /* the cut that leaves the next rectangle */
 
     ctx.globalAlpha = a;
     ctx.strokeStyle = ARC;
+    ctx.lineWidth = ARC_W / s;
     ctx.beginPath();
     ctx.arc(1, 1, 1, Math.PI, Math.PI * 1.5);
     ctx.stroke();
-    ctx.strokeStyle = LINE;
   }
 
-  var ARC = 'rgba(227,219,201,1)';
-  var LINE = 'rgba(255,255,255,1)';
 
   /* how visible a level is, judged by its size on screen, not by its index —
      that is what makes the level window shift seamlessly */
@@ -119,9 +137,8 @@
     var scale = unit * Math.pow(PHI, frac);
     var rot = -HALF_PI * frac - 0.06;
 
-    ctx.lineWidth = 1 / scale;
+    ctx.lineCap = 'round';
     ctx.lineJoin = 'round';
-    ctx.strokeStyle = LINE;
 
     labels.length = 0;
 
@@ -142,8 +159,7 @@
     for (var k = 0; k < total; k++) {
       var sizePx = scale * Math.pow(PHI, outward - k);
       var a = levelAlpha(sizePx, baseAlpha);
-      ctx.lineWidth = 1.05 / (scale * Math.pow(PHI, outward - k));
-      drawUnit(a, showCut);
+      drawUnit(a, showCut, sizePx);
 
       if (showNums && sizePx > 52 && sizePx < Math.max(W, H) * 1.6 && a > 0.08) {
         try {
