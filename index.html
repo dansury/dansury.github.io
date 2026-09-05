@@ -1,0 +1,278 @@
+<!doctype html>
+<html lang="ru" data-lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Яна Павленко — продуктовая разработка под ключ</title>
+<meta name="description" content="Портфолио Яны Павленко: 11 продуктов — Telegram-боты с ИИ, веб-сервисы, модули для 1С-Битрикс, инфраструктура. Разработка от требований заказчика до продакшена на реальном хостинге.">
+<meta name="author" content="Yana Paulenka">
+<meta name="theme-color" content="#0A0B0C">
+<meta name="color-scheme" content="dark">
+
+<meta property="og:type" content="profile">
+<meta property="og:title" content="Яна Павленко — продуктовая разработка под ключ">
+<meta property="og:description" content="11 продуктов: ИИ-боты, веб-сервисы, модули 1С-Битрикс, инфраструктура. От ТЗ до продакшена.">
+<meta property="og:image" content="assets/img/yana.jpg">
+<meta name="twitter:card" content="summary">
+
+<link rel="icon" href="assets/img/apple-touch-icon.png" sizes="180x180">
+<link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@300;400;500&display=swap">
+<link rel="stylesheet" href="assets/css/style.css">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": "Яна Павленко",
+  "alternateName": "Yana Paulenka",
+  "jobTitle": "Product Engineer",
+  "url": "https://dansury.github.io/PORTFOLIO/",
+  "image": "https://dansury.github.io/PORTFOLIO/assets/img/yana.jpg",
+  "sameAs": [
+    "https://www.linkedin.com/in/yana-paulenka/",
+    "https://github.com/dansury"
+  ]
+}
+</script>
+</head>
+<body>
+
+<canvas id="phi-canvas" aria-hidden="true"></canvas>
+<div class="vignette" aria-hidden="true"></div>
+<div class="grain" aria-hidden="true"></div>
+
+<a class="skip" href="#main">К содержанию</a>
+
+<header class="nav" id="nav">
+  <a class="nav__mark" href="#top" aria-label="В начало">
+    <svg viewBox="0 0 34 21" width="34" height="21" aria-hidden="true">
+      <rect x="0.5" y="0.5" width="33" height="20" fill="none" stroke="currentColor" stroke-width="1"/>
+      <rect x="0.5" y="0.5" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1" opacity=".55"/>
+      <path d="M0.5 0.5 A20 20 0 0 1 20.5 20.5" fill="none" stroke="currentColor" stroke-width="1.2"/>
+    </svg>
+    <span class="nav__name" data-i18n="nav.name">Яна Павленко</span>
+  </a>
+
+  <nav class="nav__links" aria-label="Разделы">
+    <a href="#method" data-i18n="nav.method">Метод</a>
+    <a href="#work" data-i18n="nav.work">Проекты</a>
+    <a href="#stack" data-i18n="nav.stack">Стек</a>
+    <a href="#contact" data-i18n="nav.contact">Контакт</a>
+  </nav>
+
+  <div class="nav__right">
+    <button class="lang" id="lang-toggle" type="button" aria-label="Switch language to English">
+      <span class="lang__opt is-on">RU</span><span class="lang__sep">/</span><span class="lang__opt">EN</span>
+    </button>
+  </div>
+</header>
+
+<div class="rail" aria-hidden="true">
+  <div class="rail__line"><span class="rail__fill" id="rail-fill"></span></div>
+  <div class="rail__meta">
+    <span class="rail__phi">φ 1.618</span>
+    <span class="rail__depth" id="rail-depth">depth 04</span>
+  </div>
+</div>
+
+<main id="main">
+
+<section class="hero" id="top">
+  <div class="wrap hero__grid">
+    <div class="hero__body">
+      <p class="eyebrow reveal" data-i18n="hero.eyebrow">Продуктовая разработка · ИИ-сервисы · 2024—2026</p>
+
+      <h1 class="hero__title" data-split>
+        <span class="line" data-i18n="hero.t1">Проектирую</span>
+        <span class="line line--em" data-i18n="hero.t2">и собираю</span>
+        <span class="line" data-i18n="hero.t3">продукты целиком</span>
+      </h1>
+
+      <p class="hero__lede reveal" data-i18n="hero.lede">
+        От разговора с заказчиком до работающего сервиса на его хостинге. Требования → спецификация → код → деплой → сопровождение. Одиннадцать продуктов: ИИ-боты, веб-сервисы, модуль для 1С-Битрикс, инфраструктура автодеплоя.
+      </p>
+
+      <div class="hero__cta reveal">
+        <a class="btn btn--primary" href="#work">
+          <span data-i18n="hero.cta1">Смотреть проекты</span>
+          <svg viewBox="0 0 16 16" width="14" height="14" aria-hidden="true"><path d="M2 8h11M9 4l4 4-4 4" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+        <a class="btn" href="https://www.linkedin.com/in/yana-paulenka/" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" width="15" height="15" aria-hidden="true" fill="currentColor"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5zM3 9h4v12H3zM9 9h3.8v1.7h.05c.53-.95 1.83-1.95 3.77-1.95 4.03 0 4.78 2.5 4.78 5.75V21h-4v-5.6c0-1.34-.03-3.06-1.9-3.06-1.9 0-2.2 1.45-2.2 2.96V21H9z"/></svg>
+          <span data-i18n="hero.cta2">LinkedIn</span>
+        </a>
+      </div>
+
+      <dl class="facts reveal">
+        <div class="fact"><dt data-i18n="facts.k1">продуктов</dt><dd><span class="num" data-count="11">11</span></dd></div>
+        <div class="fact"><dt data-i18n="facts.k2">серийных номеров в реестре</dt><dd><span class="num" data-count="83880">83 880</span></dd></div>
+        <div class="fact"><dt data-i18n="facts.k3">проверок в аудите Директа</dt><dd><span class="num" data-count="65">65</span></dd></div>
+        <div class="fact"><dt data-i18n="facts.k4">площадок публикации</dt><dd><span class="num" data-count="9">9</span></dd></div>
+      </dl>
+    </div>
+
+    <figure class="portrait reveal">
+      <div class="portrait__frame">
+        <picture>
+          <source srcset="assets/img/yana.webp" type="image/webp">
+          <img src="assets/img/yana.jpg" width="450" height="450" alt="Яна Павленко" fetchpriority="high" decoding="async">
+        </picture>
+        <svg class="portrait__spiral" viewBox="0 0 161.8 100" aria-hidden="true" preserveAspectRatio="none">
+          <path d="M161.8 0 A100 100 0 0 0 61.8 100" fill="none" stroke="currentColor" stroke-width="0.6"/>
+          <rect x="0.3" y="0.3" width="161.2" height="99.4" fill="none" stroke="currentColor" stroke-width="0.4" opacity=".5"/>
+          <line x1="61.8" y1="0" x2="61.8" y2="100" stroke="currentColor" stroke-width="0.4" opacity=".5"/>
+        </svg>
+        <span class="portrait__tag">1 : 1.618</span>
+      </div>
+      <figcaption data-i18n="portrait.cap">Яна Павленко — инженер продукта. Минск / удалённо.</figcaption>
+    </figure>
+  </div>
+
+  <div class="scroll-cue" aria-hidden="true">
+    <span data-i18n="hero.scroll">прокрутите — спираль углубится</span>
+    <i></i>
+  </div>
+</section>
+
+<section class="band" aria-hidden="true">
+  <picture>
+    <source srcset="assets/img/hand.webp" type="image/webp">
+    <img src="assets/img/hand.jpg" width="960" height="240" alt="" loading="lazy" decoding="async" data-parallax="0.12">
+  </picture>
+</section>
+
+<section class="section" id="method">
+  <div class="wrap">
+    <header class="section__head reveal">
+      <span class="section__num">01</span>
+      <h2 class="section__title" data-i18n="method.title">Метод</h2>
+      <p class="section__lede" data-i18n="method.lede">
+        Я не «пишу код по задачам». Я довожу требование заказчика до работающей функции так, чтобы через полгода можно было доказать, откуда взялась каждая строка.
+      </p>
+    </header>
+
+    <div class="cards">
+      <article class="card reveal">
+        <span class="card__idx">i</span>
+        <h3 data-i18n="m1.t">Сначала спецификация, потом код</h3>
+        <p data-i18n="m1.b">Каждая новая функция проходит цикл spec-driven: спека → план → задачи → реализация. Спека описывает фактическое поведение, а не пожелания. Это то, что позволяет вернуться к проекту через год и не читать код целиком.</p>
+      </article>
+      <article class="card reveal">
+        <span class="card__idx">ii</span>
+        <h3 data-i18n="m2.t">Трассируемость ТЗ → спека → код</h3>
+        <p data-i18n="m2.b">Каждое требование заказчика проходимо в обе стороны: пункт ТЗ ссылается на раздел спеки, функция в коде — на раздел спеки. Аудит «а это откуда?» занимает минуту, а не день. Работы вне ТЗ сначала становятся требованием в приложении, потом кодом.</p>
+      </article>
+      <article class="card reveal">
+        <span class="card__idx">iii</span>
+        <h3 data-i18n="m3.t">Продукт, а не набор функций</h3>
+        <p data-i18n="m3.b">Перед разработкой — сегмент и его работа (Jobs To Be Done), ценность, юнит-экономика, самое рискованное допущение. Функция, которая не двигает метрику, не попадает в план. Дешевле убить гипотезу до сборки, чем после.</p>
+      </article>
+      <article class="card reveal">
+        <span class="card__idx">iv</span>
+        <h3 data-i18n="m4.t">Поставка в реальность заказчика</h3>
+        <p data-i18n="m4.b">Продукты живут на обычном shared-хостинге, где нет терминала и демонов: чистый PHP или Python без тяжёлых зависимостей, SQLite, автодеплой одним файлом. Заказчик обновляет прод кнопкой, а не звонком разработчику.</p>
+      </article>
+      <article class="card reveal">
+        <span class="card__idx">v</span>
+        <h3 data-i18n="m5.t">Математика отдельно от нейросети</h3>
+        <p data-i18n="m5.b">Там, где есть расчёт — считает код, а модель только формулирует. Показатели, пороги, классификация и итоги детерминированы и воспроизводимы; ИИ получает готовые числа и не имеет права их пересчитывать. Так отчёт можно защищать перед специалистом.</p>
+      </article>
+      <article class="card reveal">
+        <span class="card__idx">vi</span>
+        <h3 data-i18n="m6.t">Один источник истины</h3>
+        <p data-i18n="m6.b">Цены, тексты, промпты и настройки живут ровно в одном месте и редактируются оператором, а не разработчиком. Ни одной цифры, продублированной в коде: копия — это будущий баг.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="work">
+  <div class="wrap">
+    <header class="section__head reveal">
+      <span class="section__num">02</span>
+      <h2 class="section__title" data-i18n="work.title">Проекты</h2>
+      <p class="section__lede" data-i18n="work.lede">
+        Каждый проект — с продуктовым разбором: какую проблему он закрывает, для кого, что даёт бизнесу. Часть репозиториев закрыта по условиям заказчика — ссылка ведёт на приватный репозиторий, доступ открываю по запросу.
+      </p>
+    </header>
+
+    <div class="filters reveal" role="group" aria-label="Фильтр проектов">
+      <button class="chip is-on" data-filter="all" type="button" data-i18n="f.all">Все</button>
+      <button class="chip" data-filter="ai" type="button" data-i18n="f.ai">ИИ-продукты</button>
+      <button class="chip" data-filter="web" type="button" data-i18n="f.web">Веб-сервисы</button>
+      <button class="chip" data-filter="b2b" type="button" data-i18n="f.b2b">Внутренние системы</button>
+      <button class="chip" data-filter="infra" type="button" data-i18n="f.infra">Инфраструктура</button>
+    </div>
+
+    <ol class="projects" id="projects"></ol>
+
+    <noscript>
+      <ul class="fallback">
+        <li><a href="https://github.com/dansury/careerhack">CareerHack / Executive Matrix</a></li>
+        <li><a href="https://github.com/dansury/expertunpack_bot">ExpertUnpack Bot</a></li>
+        <li><a href="https://github.com/dansury/Growth_Producer">Growth Producer</a></li>
+        <li><a href="https://github.com/dansury/CGM-diet">CGM-diet</a></li>
+        <li><a href="https://github.com/dansury/NeuroPro">NeuroPro</a></li>
+        <li><a href="https://github.com/dansury/kp-atlant">КП Atlant</a></li>
+        <li><a href="https://github.com/dansury/atlant.serials">atlant.serials</a></li>
+        <li><a href="https://github.com/dansury/kraskiweb">Kalinskie Kraski</a></li>
+        <li><a href="https://github.com/dansury/yandex-direct-ads">Yandex.Direct Skill</a></li>
+        <li><a href="https://github.com/dansury/site_yacloud_openrouter">LLM-тулкит</a></li>
+        <li><a href="https://github.com/dansury/pull">pull.php</a></li>
+      </ul>
+    </noscript>
+  </div>
+</section>
+
+<section class="section" id="stack">
+  <div class="wrap">
+    <header class="section__head reveal">
+      <span class="section__num">03</span>
+      <h2 class="section__title" data-i18n="stack.title">Стек</h2>
+      <p class="section__lede" data-i18n="stack.lede">Выбор инструмента определяется хостингом заказчика и сроком поддержки, а не модой.</p>
+    </header>
+    <div class="stack" id="stack-grid"></div>
+  </div>
+</section>
+
+<section class="section section--contact" id="contact">
+  <div class="wrap">
+    <div class="contact reveal">
+      <span class="section__num">04</span>
+      <h2 class="contact__title" data-i18n="contact.title">Обсудим ваш продукт</h2>
+      <p class="contact__lede" data-i18n="contact.lede">
+        Возьмусь за продукт целиком: разберу задачу как продуктовую, напишу спецификацию, соберу, разверну и передам с документацией. Или подключусь к существующей системе — там, где нужно навести порядок.
+      </p>
+      <div class="contact__links">
+        <a class="btn btn--primary" href="https://www.linkedin.com/in/yana-paulenka/" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" width="15" height="15" aria-hidden="true" fill="currentColor"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5zM3 9h4v12H3zM9 9h3.8v1.7h.05c.53-.95 1.83-1.95 3.77-1.95 4.03 0 4.78 2.5 4.78 5.75V21h-4v-5.6c0-1.34-.03-3.06-1.9-3.06-1.9 0-2.2 1.45-2.2 2.96V21H9z"/></svg>
+          <span>LinkedIn</span>
+        </a>
+        <a class="btn" href="https://github.com/dansury" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" width="15" height="15" aria-hidden="true" fill="currentColor"><path d="M12 .5a11.5 11.5 0 0 0-3.64 22.41c.58.1.79-.25.79-.55v-2.1c-3.2.7-3.88-1.37-3.88-1.37-.53-1.34-1.29-1.7-1.29-1.7-1.05-.72.08-.7.08-.7 1.16.08 1.77 1.2 1.77 1.2 1.03 1.77 2.7 1.26 3.36.96.1-.75.4-1.26.73-1.55-2.56-.29-5.25-1.28-5.25-5.7 0-1.26.45-2.29 1.19-3.1-.12-.29-.52-1.46.11-3.05 0 0 .97-.31 3.18 1.18a11 11 0 0 1 5.79 0c2.2-1.49 3.17-1.18 3.17-1.18.63 1.59.23 2.76.12 3.05.74.81 1.18 1.84 1.18 3.1 0 4.43-2.69 5.4-5.26 5.69.41.36.78 1.06.78 2.14v3.17c0 .3.2.66.8.55A11.5 11.5 0 0 0 12 .5z"/></svg>
+          <span>github.com/dansury</span>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer class="foot">
+  <div class="wrap foot__in">
+    <span class="foot__phi">a : b = b : (a+b) = 1 : 1.6180339887…</span>
+    <span class="foot__c">© <span id="year">2026</span> <span data-i18n="nav.name">Яна Павленко</span></span>
+  </div>
+</footer>
+
+<script src="assets/js/motion.js"></script>
+<script src="assets/js/phi.js"></script>
+<script src="assets/js/data.js"></script>
+<script src="assets/js/app.js"></script>
+</body>
+</html>
