@@ -73,7 +73,7 @@ window.SITE = (function () {
   };
 
   var facts = {
-    ru: [{ v: '11', k: 'facts.k1' }, { v: '6 ч → 1 мин', k: 'facts.k2' },
+    ru: [{ v: '11', k: 'facts.k1' }, { v: '5 ч → 1 мин', k: 'facts.k2' },
          { v: '5 мин', k: 'facts.k3' }, { v: '24', k: 'facts.k4' }],
     en: [{ v: '11', k: 'facts.k1' }, { v: '6 h → 1 min', k: 'facts.k2' },
          { v: '5 min', k: 'facts.k3' }, { v: '24', k: 'facts.k4' }]
