@@ -511,11 +511,13 @@ main{ position:relative; z-index:3 }
 .project__links{ display:flex; flex-wrap:wrap; gap:var(--s2); margin-top:var(--s2) }
 .linkbtn{
   display:inline-flex; align-items:center; gap:7px; min-height:40px;
-  padding:0 var(--s3); font-size:13px; color:var(--ink-2);
-  border:1px solid var(--ink-line); border-radius:2px; background:var(--paper-hi);
+  padding:0 var(--s3); font-size:13px; color:var(--text-2);
+  border:1px solid var(--line-2); border-radius:2px;
   transition:color var(--dur) var(--ease), border-color var(--dur) var(--ease), background var(--dur) var(--ease);
 }
 .linkbtn:hover{ color:var(--void); background:var(--patina); border-color:var(--patina) }
+/* the link to the live product — white, because it is the one worth pressing */
+.linkbtn--live{ color:var(--ink-2); background:var(--paper-hi); border-color:var(--ink-line) }
 .linkbtn svg{ flex:none }
 
 .analysis{ display:grid; gap:var(--s4) }
@@ -527,8 +529,11 @@ main{ position:relative; z-index:3 }
   background:var(--paper); color:var(--ink);
 }
 .analysis--light .an{ border-bottom:0; padding-bottom:0 }
+/* the audience cell fills its half of the plate, so it reads apart from the outcome */
 .analysis--light .an:first-child{
-  background:rgba(20,23,26,.05); border-radius:3px; padding:var(--s3);
+  background:rgba(20,23,26,.05);
+  margin:calc(-1 * var(--s5)) 0 calc(-1 * var(--s5)) calc(-1 * var(--plate-pad));
+  padding:var(--s5) var(--s4) var(--s5) var(--plate-pad);
 }
 .analysis--light .an__k{ color:var(--ink-mut); opacity:1 }
 .analysis--light .an__v{ color:var(--ink) }
@@ -640,6 +645,10 @@ main{ position:relative; z-index:3 }
   .portrait figcaption{ display:none }
   .project__inner{ grid-template-columns:1fr; gap:var(--s5) }
   .analysis--light{ grid-template-columns:1fr; gap:var(--s4) }
+  .analysis--light .an:first-child{
+    margin:calc(-1 * var(--s5)) calc(-1 * var(--plate-pad)) 0;
+    padding:var(--s5) var(--plate-pad);
+  }
   .rail{ display:none }
 }
 @media (max-width: 860px){

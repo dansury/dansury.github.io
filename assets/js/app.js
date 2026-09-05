@@ -93,7 +93,7 @@
 
       if (p.live) {
         var live = document.createElement('a');
-        live.className = 'linkbtn';
+        live.className = 'linkbtn linkbtn--live';
         live.href = p.live;
         live.target = '_blank';
         live.rel = 'noopener';
