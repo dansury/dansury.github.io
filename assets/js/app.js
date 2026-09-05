@@ -103,17 +103,19 @@
       aside.appendChild(links);
       inner.appendChild(aside);
 
-      /* analysis */
+      /* what the project was and how it works — on the dark plate */
       var an = el('div', 'analysis');
-      [['p.problem', c.problem], ['p.solution', c.solution], ['p.audience', c.audience],
-       ['p.value', c.value], ['p.reuse', c.reuse]]
-        .forEach(function (row) {
-          var r = el('div', 'an' + (row[0] === 'p.reuse' ? ' an--reuse' : ''));
-          r.appendChild(el('span', 'an__k', t(row[0])));
-          r.appendChild(el('p', 'an__v', row[1]));
-          an.appendChild(r);
-        });
+      [['p.problem', c.problem], ['p.solution', c.solution]].forEach(function (row) {
+        an.appendChild(anRow(row[0], row[1]));
+      });
       inner.appendChild(an);
+
+      /* what it is worth — inverted and full width, because this part sells */
+      var val = el('div', 'analysis analysis--light');
+      [['p.audience', c.audience], ['p.value', c.value]].forEach(function (row) {
+        val.appendChild(anRow(row[0], row[1]));
+      });
+      inner.appendChild(val);
 
       panel.appendChild(inner);
       li.appendChild(panel);
@@ -126,6 +128,13 @@
         M.collapse(panel, !open);
       });
     });
+  }
+
+  function anRow(key, text) {
+    var r = el('div', 'an');
+    r.appendChild(el('span', 'an__k', t(key)));
+    r.appendChild(el('p', 'an__v', text));
+    return r;
   }
 
   function kv(k, v) {
