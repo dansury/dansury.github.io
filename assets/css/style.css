@@ -511,8 +511,8 @@ main{ position:relative; z-index:3 }
 .project__links{ display:flex; flex-wrap:wrap; gap:var(--s2); margin-top:var(--s2) }
 .linkbtn{
   display:inline-flex; align-items:center; gap:7px; min-height:40px;
-  padding:0 var(--s3); font-size:13px; color:var(--text-2);
-  border:1px solid var(--line-2); border-radius:2px;
+  padding:0 var(--s3); font-size:13px; color:var(--ink-2);
+  border:1px solid var(--ink-line); border-radius:2px; background:var(--paper-hi);
   transition:color var(--dur) var(--ease), border-color var(--dur) var(--ease), background var(--dur) var(--ease);
 }
 .linkbtn:hover{ color:var(--void); background:var(--patina); border-color:var(--patina) }
@@ -527,7 +527,9 @@ main{ position:relative; z-index:3 }
   background:var(--paper); color:var(--ink);
 }
 .analysis--light .an{ border-bottom:0; padding-bottom:0 }
-.analysis--light .an:first-child{ opacity:.82 }
+.analysis--light .an:first-child{
+  background:rgba(20,23,26,.05); border-radius:3px; padding:var(--s3);
+}
 .analysis--light .an__k{ color:var(--ink-mut); opacity:1 }
 .analysis--light .an__v{ color:var(--ink) }
 .an{

@@ -150,7 +150,7 @@ window.SITE = (function () {
     {
       id: 'cgm', cat: ['ai'], year: '2026', status: 'prod',
       repo: 'https://github.com/dansury/CGM-diet', priv: false,
-      live: 'https://t.me/CGMdiet_bot', liveLabel: '@CGMdiet_bot',
+      live: 'https://t.me/CGMdiet_bot?utm_src=dangh', liveLabel: '@CGMdiet_bot',
       tech: ['Python', 'aiogram', 'SQLAlchemy / Alembic', 'vision-модели', 'health-sync'],
       ru: {
         name: 'Бот-диетолог: анализ еды по датчику глюкозы',
@@ -174,10 +174,10 @@ window.SITE = (function () {
     {
       id: 'kraski', cat: ['b2b', 'web'], year: '2025 — 2026', status: 'prod',
       repo: 'https://github.com/dansury/kraskiweb', priv: true,
-      live: 'https://paints.skywood.club/?demoaccess', liveLabel: 'Демодоступ',
+      live: 'https://paints.skywood.club/?demoaccess&utm_src=dangh', liveLabel: 'Демодоступ',
       tech: ['PHP 8.2+', 'SQLite', 'Leaflet', 'PWA / web push', 'ASR / OCR', 'Яндекс.Геокодер'],
       ru: {
-        name: 'Полевая ERP с автомаршрутизацией',
+        name: 'Маршрутная ERP с внутренним telegram',
         tag: 'Маршруты, склад и внутренний «телеграм» в одном веб-приложении',
         role: 'Продукт, архитектура, разработка, спецификации',
         problem: 'Маршруты и учет материалов жили в Excel, а переписка по клиентам — в личных мессенджерах сотрудников.',
@@ -198,7 +198,7 @@ window.SITE = (function () {
     {
       id: 'neuropro', cat: ['ai', 'web'], year: '2026', status: 'prod',
       repo: 'https://github.com/dansury/NeuroPro', priv: false,
-      live: null, liveLabel: null,
+      live: 'https://neuropro.skywood.club/?utm_src=dangh', liveLabel: 'neuropro.skywood.club',
       tech: ['PHP 8.4 без Composer', 'SQLite', 'Yandex Vision OCR', 'OpenRouter / Yandex LLM', 'SVG', 'SMTP'],
       ru: {
         name: 'NeuroPro',
@@ -222,7 +222,7 @@ window.SITE = (function () {
     {
       id: 'careerhack', cat: ['ai', 'web'], year: '2025 — 2026', status: 'prod',
       repo: 'https://github.com/dansury/careerhack', priv: true,
-      live: 'https://careerhack.ru', liveLabel: 'careerhack.ru',
+      live: 'https://careerhack.ru/?utm_src=dangh', liveLabel: 'careerhack.ru',
       tech: ['PHP 8', 'SQLite', 'LLM-скоринг', 'SMTP', 'JSON-LD / SEO', 'PWA'],
       ru: {
         name: 'CareerHack · Executive Matrix',
@@ -246,7 +246,7 @@ window.SITE = (function () {
     {
       id: 'expertunpack', cat: ['ai'], year: '2024 — 2026', status: 'prod',
       repo: 'https://github.com/dansury/expertunpack_bot', priv: true,
-      live: 'https://t.me/expertunpack_bot', liveLabel: '@expertunpack_bot',
+      live: 'https://t.me/expertunpack_bot?utm_src=dangh', liveLabel: '@expertunpack_bot',
       tech: ['Python', 'aiogram', 'SQLite', 'LLM', 'ASR', 'Telegram Payments'],
       ru: {
         name: 'ExpertUnpack',
@@ -270,7 +270,7 @@ window.SITE = (function () {
     {
       id: 'growth', cat: ['ai'], year: '2026', status: 'beta',
       repo: 'https://github.com/dansury/Growth_Producer', priv: false,
-      live: 'https://t.me/GrowthProducer_bot', liveLabel: '@GrowthProducer_bot',
+      live: 'https://t.me/GrowthProducer_bot?utm_src=dangh', liveLabel: '@GrowthProducer_bot',
       tech: ['Python', 'LLM', 'ASR / OCR', 'граф заметок', '9 площадок'],
       ru: {
         name: 'Growth Producer',
