@@ -14,6 +14,10 @@
  *            figure is self-similar and never runs out. Each step also carries
  *            the quarter-turn of the transform, at an even rate, so the figure
  *            turns for as long as the page is moving.
+ *   grow   — a plain magnification laid over the fall. The fall on its own
+ *            is self-similar, so it can never look any bigger; the shell only
+ *            reads as growing when the unit, the stroke, the dot spacing and
+ *            the numbers all swell together. That is what this does.
  *   detail — how many levels are drawn, whether the square subdivisions and
  *            the Fibonacci numbers appear. The deeper you scroll, the more
  *            worked-out the construction becomes.
@@ -32,6 +36,8 @@
   var FIB = [1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89, 144, 233, 377, 610, 987, 1597, 2584, 4181];
   var LOOPS = 10.5;              /* φ-steps travelled over a full page scroll */
   var LABEL0 = 17;               /* Fibonacci index of the square the fall starts on */
+  var MAG0 = 0.78;               /* magnification of the shell at the top of the page */
+  var MAG1 = 2.6;                /* ...and at the bottom */
 
   var canvas = document.getElementById('phi-canvas');
   if (!canvas) return;
@@ -41,6 +47,7 @@
   var W = 0, H = 0, dpr = 1;
   var zoom = new Motion.Spring(0, { stiffness: 72, damping: 16 });
   var detail = new Motion.Spring(0, { stiffness: 42, damping: 16 });
+  var mag = new Motion.Spring(MAG0, { stiffness: 46, damping: 16 });
   var px = new Motion.Spring(0, { stiffness: 46, damping: 14 });
   var py = new Motion.Spring(0, { stiffness: 46, damping: 14 });
   var dirty = true;
@@ -64,14 +71,15 @@
   var DOT_R = 0.72;     /* dots stay thinner than the shell */
   var DOT_STEP = 12;    /* screen px between dots */
   var DOT_MAX = 96;
+  var weight = 1;       /* stroke and dot weight, swelling with the magnification */
 
   /* one edge, drawn as dots that fade out toward its corners.
      s = screen pixels per local unit, so dots keep their size at any depth */
   function dottedEdge(x0, y0, x1, y1, a, s) {
     var lenPx = Math.hypot(x1 - x0, y1 - y0) * s;
     if (lenPx < 7) return;
-    var n = Math.min(DOT_MAX, Math.max(3, Math.round(lenPx / DOT_STEP)));
-    var r = DOT_R / s;
+    var n = Math.min(DOT_MAX, Math.max(3, Math.round(lenPx / (DOT_STEP * weight))));
+    var r = DOT_R * weight / s;
     for (var i = 0; i <= n; i++) {
       var t = i / n;
       var f = Math.pow(Math.sin(Math.PI * t), 0.9);   /* the gradient to the corners */
@@ -97,7 +105,7 @@
 
     ctx.globalAlpha = a;
     ctx.strokeStyle = ARC;
-    ctx.lineWidth = ARC_W / s;
+    ctx.lineWidth = ARC_W * weight / s;
     ctx.beginPath();
     ctx.arc(1, 1, 1, Math.PI, Math.PI * 1.5);
     ctx.stroke();
@@ -153,7 +161,11 @@
     var ax = W * 0.618 + px.current;
     var ay = H * 0.382 + py.current;
 
-    var unit = (Math.max(W, H) * 1.45) / PHI;
+    /* the magnification: the whole figure, and everything drawn on it, grows */
+    var g = Math.max(0.2, mag.current);
+    weight = Math.pow(g, 0.7);
+
+    var unit = (Math.max(W, H) * 1.45 / PHI) * g;
     var scale = unit * Math.pow(PHI, frac);
     var rot = -HALF_PI * frac;           /* the step's quarter-turn, at an even rate */
 
@@ -185,7 +197,7 @@
             y: (m.b * 0.5 + m.d * 0.5 + m.f) / dpr,
             n: fibAt(LABEL0 - (whole + k - outward)),   /* rides with its square */
             a: a * Motion.clamp((d - 0.14) / 0.36, 0, 1),
-            s: Motion.clamp(sizePx / 24, 9.5, 17)
+            s: Motion.clamp(sizePx / 24, 9.5, 17) * Math.min(weight, 1.5)
           });
         } catch (e) { /* getTransform unsupported — skip the numbers */ }
       }
@@ -217,6 +229,7 @@
     var p = Motion.scroll.progress;
     zoom.set(p * LOOPS);
     detail.set(Motion.clamp(p * 1.45, 0, 1));
+    mag.set(MAG0 + (MAG1 - MAG0) * p);
     dirty = true;
   }
 
@@ -241,12 +254,14 @@
   onScroll();
   zoom.jump(zoom.target);
   detail.jump(detail.target);
+  mag.jump(mag.target);
 
   Motion.tick(function (dt) {
     if (hidden) return;
     var moving = false;
     moving = zoom.step(dt) || moving;
     moving = detail.step(dt) || moving;
+    moving = mag.step(dt) || moving;
     moving = px.step(dt) || moving;
     moving = py.step(dt) || moving;
     if (moving || dirty) { render(); dirty = moving; }
