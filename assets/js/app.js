@@ -54,7 +54,7 @@
       btn.appendChild(main);
 
       var meta = el('span', 'project__meta');
-      var stKey = p.status === 'prod' ? 'st.prod' : p.status === 'beta' ? 'st.beta' : 'st.pub';
+      var stKey = p.status === 'prod' ? 'st.prod' : p.status === 'beta' ? 'st.beta' : p.status === 'closedBeta' ? 'st.closedBeta' : 'st.pub';
       var badge = el('span', 'badge ' + (p.status === 'prod' ? 'badge--live' : ''), t(stKey));
       meta.appendChild(badge);
       meta.appendChild(el('span', 'project__year', p.year));
@@ -71,9 +71,8 @@
 
       var inner = el('div', 'project__inner');
 
-      /* aside: role / tech / links */
+      /* aside: tech / links */
       var aside = el('div', 'project__aside');
-      aside.appendChild(kv(t('p.role'), c.role));
 
       var tk = el('div', 'kv');
       tk.appendChild(el('span', 'kv__k', t('p.stack')));
@@ -135,13 +134,6 @@
     r.appendChild(el('span', 'an__k', t(key)));
     r.appendChild(el('p', 'an__v', text));
     return r;
-  }
-
-  function kv(k, v) {
-    var n = el('div', 'kv');
-    n.appendChild(el('span', 'kv__k', k));
-    n.appendChild(el('span', 'kv__v', v));
-    return n;
   }
 
   /* ---------------- facts ---------------- */
