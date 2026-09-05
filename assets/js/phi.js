@@ -12,9 +12,8 @@
  *   zoom   — a continuous fall into the eye. One page of scroll ≈ LOOPS
  *            whole φ-steps; the level window shifts by one every step, so the
  *            figure is self-similar and never runs out. Each step also carries
- *            the quarter-turn of the transform, but held back at both ends
- *            (see `turn`): the figure spends most of a step square to the page,
- *            then swings round to land square again on the next one.
+ *            the quarter-turn of the transform, at an even rate, so the figure
+ *            turns for as long as the page is moving.
  *   detail — how many levels are drawn, whether the square subdivisions and
  *            the Fibonacci numbers appear. The deeper you scroll, the more
  *            worked-out the construction becomes.
@@ -33,7 +32,6 @@
   var FIB = [1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89, 144, 233, 377, 610, 987, 1597, 2584, 4181];
   var LOOPS = 10.5;              /* φ-steps travelled over a full page scroll */
   var LABEL0 = 17;               /* Fibonacci index of the square the fall starts on */
-  var LOCK = 0.3;                /* share of a step held square to the page, each end */
 
   var canvas = document.getElementById('phi-canvas');
   if (!canvas) return;
@@ -118,14 +116,6 @@
     ctx.translate(-PHI, 0);
   }
 
-  /* the quarter-turn of one step, eased and held at both ends, so the grid
-     rests square to the page far more often than it is on its way round.
-     Flat at t = 0 and t = 1, so steps join without a kick */
-  function turn(t) {
-    var u = Motion.clamp((t - LOCK) / (1 - 2 * LOCK), 0, 1);
-    return u * u * (3 - 2 * u);
-  }
-
   /* clamped, not wrapped: the sequence must never jump from 1 back to 4181 */
   function fibAt(i) {
     return FIB[Math.max(0, Math.min(FIB.length - 1, i))];
@@ -165,7 +155,7 @@
 
     var unit = (Math.max(W, H) * 1.45) / PHI;
     var scale = unit * Math.pow(PHI, frac);
-    var rot = -HALF_PI * turn(frac);     /* the step's quarter-turn, with its detents */
+    var rot = -HALF_PI * frac;           /* the step's quarter-turn, at an even rate */
 
     ctx.lineCap = 'round';
     ctx.lineJoin = 'round';
