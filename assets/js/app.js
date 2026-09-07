@@ -22,7 +22,8 @@
   var ICON = {
     github: '<svg viewBox="0 0 24 24" width="14" height="14" aria-hidden="true" fill="currentColor"><path d="M12 .5a11.5 11.5 0 0 0-3.64 22.41c.58.1.79-.25.79-.55v-2.1c-3.2.7-3.88-1.37-3.88-1.37-.53-1.34-1.29-1.7-1.29-1.7-1.05-.72.08-.7.08-.7 1.16.08 1.77 1.2 1.77 1.2 1.03 1.77 2.7 1.26 3.36.96.1-.75.4-1.26.73-1.55-2.56-.29-5.25-1.28-5.25-5.7 0-1.26.45-2.29 1.19-3.1-.12-.29-.52-1.46.11-3.05 0 0 .97-.31 3.18 1.18a11 11 0 0 1 5.79 0c2.2-1.49 3.17-1.18 3.17-1.18.63 1.59.23 2.76.12 3.05.74.81 1.18 1.84 1.18 3.1 0 4.43-2.69 5.4-5.26 5.69.41.36.78 1.06.78 2.14v3.17c0 .3.2.66.8.55A11.5 11.5 0 0 0 12 .5z"/></svg>',
     lock: '<svg viewBox="0 0 16 16" width="13" height="13" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.3"><rect x="3" y="7" width="10" height="7" rx="1.5"/><path d="M5.5 7V5a2.5 2.5 0 0 1 5 0v2"/></svg>',
-    out: '<svg viewBox="0 0 16 16" width="13" height="13" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"><path d="M6.5 3H3.5v9.5H13V9.5"/><path d="M9 3h4v4"/><path d="M13 3 7.5 8.5"/></svg>'
+    out: '<svg viewBox="0 0 16 16" width="13" height="13" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"><path d="M6.5 3H3.5v9.5H13V9.5"/><path d="M9 3h4v4"/><path d="M13 3 7.5 8.5"/></svg>',
+    page: '<svg viewBox="0 0 16 16" width="13" height="13" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linejoin="round"><rect x="2" y="3" width="12" height="10" rx="1.5"/><path d="M2 6h12"/><path d="M4.5 9h4"/></svg>'
   };
 
   /* ---------------- projects ---------------- */
@@ -89,6 +90,16 @@
       repo.rel = 'noopener';
       repo.innerHTML = (p.priv ? ICON.lock : ICON.github) + '<span>' + (p.priv ? t('p.repoPrivate') : t('p.repo')) + '</span>';
       links.appendChild(repo);
+
+      if (p.pages) {
+        var page = document.createElement('a');
+        page.className = 'linkbtn';
+        page.href = p.pages;
+        page.target = '_blank';
+        page.rel = 'noopener';
+        page.innerHTML = ICON.page + '<span>' + t('p.pages') + '</span>';
+        links.appendChild(page);
+      }
 
       if (p.live) {
         var live = document.createElement('a');
