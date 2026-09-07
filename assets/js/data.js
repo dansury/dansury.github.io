@@ -35,6 +35,7 @@ window.SITE = (function () {
       'p.problem': 'Проблема', 'p.solution': 'Решение', 'p.audience': 'Для кого', 'p.value': 'Что даёт бизнесу',
       'p.stack': 'Технологии',
       'p.repo': 'Репозиторий', 'p.repoPrivate': 'Репозиторий (закрыт)',
+      'p.pages': 'Страница проекта',
       'st.prod': 'в продакшене', 'st.beta': 'открытая бета', 'st.closedBeta': 'закрытая бета', 'st.pub': 'опубликовано'
     },
     en: {
@@ -68,6 +69,7 @@ window.SITE = (function () {
       'p.problem': 'Problem', 'p.solution': 'Solution', 'p.audience': 'Who it is for', 'p.value': 'Business outcome',
       'p.stack': 'Tech',
       'p.repo': 'Repository', 'p.repoPrivate': 'Repository (private)',
+      'p.pages': 'Project page',
       'st.prod': 'in production', 'st.beta': 'open beta', 'st.closedBeta': 'closed beta', 'st.pub': 'published'
     }
   };
@@ -146,6 +148,7 @@ window.SITE = (function () {
     {
       id: 'cgm', cat: ['ai'], year: '2026', status: 'prod',
       repo: 'https://github.com/dansury/CGM-diet', priv: false,
+      pages: 'https://dansury.github.io/CGM-diet/',
       live: 'https://t.me/CGMdiet_bot?utm_src=dangh', liveLabel: '@CGMdiet_bot',
       tech: ['Python', 'aiogram', 'SQLAlchemy / Alembic', 'vision-модели', 'health-sync'],
       ru: {
@@ -190,6 +193,7 @@ window.SITE = (function () {
     {
       id: 'neuropro', cat: ['ai', 'web'], year: '2026', status: 'prod',
       repo: 'https://github.com/dansury/NeuroPro', priv: false,
+      pages: 'https://dansury.github.io/NeuroPro/',
       live: 'https://neuropro.skywood.club/?utm_src=dangh', liveLabel: 'neuropro.skywood.club',
       tech: ['PHP 8.4 без Composer', 'SQLite', 'Yandex Vision OCR', 'OpenRouter / Yandex LLM', 'SVG', 'SMTP'],
       ru: {
@@ -256,6 +260,7 @@ window.SITE = (function () {
     {
       id: 'growth', cat: ['ai'], year: '2026', status: 'closedBeta',
       repo: 'https://github.com/dansury/Growth_Producer', priv: false,
+      pages: 'https://dansury.github.io/Growth_Producer/',
       live: 'https://t.me/GrowthProducer_bot?utm_src=dangh', liveLabel: '@GrowthProducer_bot',
       tech: ['Python', 'LLM', 'ASR / OCR', 'граф заметок', '9 площадок'],
       ru: {
@@ -278,6 +283,7 @@ window.SITE = (function () {
     {
       id: 'direct', cat: ['ai', 'infra'], year: '2026', status: 'pub',
       repo: 'https://github.com/dansury/yandex-direct-ads', priv: false,
+      pages: 'https://dansury.github.io/yandex-direct-ads/',
       live: null, liveLabel: null,
       tech: ['Python stdlib', 'Яндекс.Директ API v5', 'Яндекс.Метрика', 'Claude Skill'],
       ru: {
@@ -300,6 +306,7 @@ window.SITE = (function () {
     {
       id: 'toolkit', cat: ['infra'], year: '2025 — 2026', status: 'pub',
       repo: 'https://github.com/dansury/site_yacloud_openrouter', priv: false,
+      pages: 'https://dansury.github.io/site_yacloud_openrouter/',
       live: null, liveLabel: null,
       tech: ['PHP без Composer', 'cURL', 'SQLite', 'OpenRouter', 'Yandex Foundation Models / Vision'],
       ru: {
@@ -322,6 +329,7 @@ window.SITE = (function () {
     {
       id: 'pull', cat: ['infra'], year: '2025 — 2026', status: 'pub',
       repo: 'https://github.com/dansury/pull', priv: false,
+      pages: 'https://dansury.github.io/pull/',
       live: null, liveLabel: null,
       tech: ['PHP', 'GitHub ZIP API', 'без git и SSH'],
       ru: {
