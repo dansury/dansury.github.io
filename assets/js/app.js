@@ -194,7 +194,7 @@
     });
   }
 
-  function setLang(next) {
+  function setLang(next, persist) {
     lang = next;
     applyStatic();
     splitTitle();
@@ -204,7 +204,98 @@
     applyFilter(currentFilter, true);
     initReveals();
     counters();
-    try { localStorage.setItem('lang', lang); } catch (e) {}
+    if (persist !== false) keep(LANG_KEY, lang);
+  }
+
+  /* ---------------- language by region ---------------- */
+
+  /* Manual choice wins forever; otherwise the country of the IP decides:
+     Russia -> ru, anywhere else -> en. */
+
+  var LANG_KEY = 'lang';
+  var GEO_KEY = 'geo-country';
+  var GEO_TTL = 7 * 24 * 60 * 60 * 1000;
+  var GEO_TIMEOUT = 2500;
+
+  /* Free, keyless, CORS-enabled; tried in order until one answers. */
+  var GEO_ENDPOINTS = [
+    'https://get.geojs.io/v1/ip/country.json',
+    'https://ipwho.is/?fields=country_code',
+    'https://ipapi.co/json/'
+  ];
+
+  var RU_ZONES = [
+    'Europe/Kaliningrad', 'Europe/Moscow', 'Europe/Simferopol', 'Europe/Kirov',
+    'Europe/Volgograd', 'Europe/Astrakhan', 'Europe/Saratov', 'Europe/Ulyanovsk',
+    'Europe/Samara', 'Asia/Yekaterinburg', 'Asia/Omsk', 'Asia/Novosibirsk',
+    'Asia/Barnaul', 'Asia/Tomsk', 'Asia/Novokuznetsk', 'Asia/Krasnoyarsk',
+    'Asia/Irkutsk', 'Asia/Chita', 'Asia/Yakutsk', 'Asia/Khandyga',
+    'Asia/Vladivostok', 'Asia/Ust-Nera', 'Asia/Magadan', 'Asia/Sakhalin',
+    'Asia/Srednekolymsk', 'Asia/Kamchatka', 'Asia/Anadyr'
+  ];
+
+  function stored(key) {
+    try { return localStorage.getItem(key); } catch (e) { return null; }
+  }
+
+  function keep(key, value) {
+    try { localStorage.setItem(key, value); } catch (e) {}
+  }
+
+  function langOf(country) { return country === 'RU' ? 'ru' : 'en'; }
+
+  /* Offline guess for the first paint, until the IP answers. */
+  function guessLang() {
+    if ((navigator.language || '').slice(0, 2).toLowerCase() === 'ru') return 'ru';
+    var tz = '';
+    try { tz = Intl.DateTimeFormat().resolvedOptions().timeZone || ''; } catch (e) {}
+    return RU_ZONES.indexOf(tz) > -1 ? 'ru' : 'en';
+  }
+
+  function countryOf(data) {
+    if (!data) return '';
+    var v = data.country_code || data.countryCode || data.country || '';
+    return typeof v === 'string' && v.length === 2 ? v.toUpperCase() : '';
+  }
+
+  function cachedCountry() {
+    try {
+      var raw = JSON.parse(stored(GEO_KEY) || 'null');
+      if (raw && raw.c && Date.now() - raw.t < GEO_TTL) return raw.c;
+    } catch (e) {}
+    return '';
+  }
+
+  function ask(url) {
+    var ctl = window.AbortController ? new AbortController() : null;
+    var timer = setTimeout(function () { if (ctl) ctl.abort(); }, GEO_TIMEOUT);
+    return fetch(url, { signal: ctl ? ctl.signal : undefined, mode: 'cors', cache: 'no-store' })
+      .then(function (r) { return r.ok ? r.json() : null; })
+      .then(countryOf)
+      .catch(function () { return ''; })
+      .then(function (c) { clearTimeout(timer); return c; });
+  }
+
+  /* Walks the endpoints one by one, stops at the first two-letter answer. */
+  function detectCountry() {
+    var hit = cachedCountry();
+    if (hit) return Promise.resolve(hit);
+    if (!window.fetch || !window.Promise) return Promise.resolve('');
+    return GEO_ENDPOINTS.reduce(function (chain, url) {
+      return chain.then(function (c) { return c || ask(url); });
+    }, Promise.resolve('')).then(function (c) {
+      if (c) keep(GEO_KEY, JSON.stringify({ c: c, t: Date.now() }));
+      return c;
+    });
+  }
+
+  function applyRegionLang() {
+    if (stored(LANG_KEY)) return; // the visitor already chose
+    detectCountry().then(function (country) {
+      if (!country || stored(LANG_KEY)) return;
+      var next = langOf(country);
+      if (next !== lang) setLang(next, false);
+    });
   }
 
   /* ---------------- hero title ---------------- */
@@ -313,11 +404,8 @@
   /* ---------------- boot ---------------- */
 
   function boot() {
-    try {
-      var saved = localStorage.getItem('lang');
-      if (saved === 'en' || saved === 'ru') lang = saved;
-      else if ((navigator.language || '').slice(0, 2).toLowerCase() !== 'ru') lang = 'en';
-    } catch (e) {}
+    var saved = stored(LANG_KEY);
+    lang = (saved === 'en' || saved === 'ru') ? saved : guessLang();
 
     applyStatic();
     renderFacts();
@@ -333,6 +421,8 @@
 
     var toggle = $('#lang-toggle');
     if (toggle) toggle.addEventListener('click', function () { setLang(lang === 'ru' ? 'en' : 'ru'); });
+
+    applyRegionLang();
 
     $$('.chip').forEach(function (c) {
       c.addEventListener('click', function () { applyFilter(c.dataset.filter); });
