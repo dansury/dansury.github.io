@@ -104,6 +104,7 @@ window.SITE = (function () {
     {
       id: 'kp', cat: ['ai', 'b2b'], year: '2026', status: 'prod',
       repo: 'https://github.com/dansury/kp-atlant', priv: true,
+      pages: 'https://dansury.github.io/kp-atlant/',
       live: null, liveLabel: null,
       tech: ['PHP 8.1', 'SQLite', 'OpenRouter + Yandex', 'IMAP / SMTP', 'PWA', 'web push'],
       ru: {
@@ -150,6 +151,7 @@ window.SITE = (function () {
       repo: 'https://github.com/dansury/CGM-diet', priv: false,
       pages: 'https://dansury.github.io/CGM-diet/',
       live: 'https://t.me/CGMdiet_bot?utm_src=dangh', liveLabel: '@CGMdiet_bot',
+      live2: 'https://cgm.skywood.club/?utm_src=dangh', live2Label: 'cgm.skywood.club',
       tech: ['Python', 'aiogram', 'SQLAlchemy / Alembic', 'vision-модели', 'health-sync'],
       ru: {
         name: 'Бот-диетолог: анализ еды по датчику глюкозы',
