@@ -110,6 +110,16 @@
         live.innerHTML = ICON.out + '<span>' + p.liveLabel + '</span>';
         links.appendChild(live);
       }
+
+      if (p.live2) {
+        var live2 = document.createElement('a');
+        live2.className = 'linkbtn linkbtn--live';
+        live2.href = p.live2;
+        live2.target = '_blank';
+        live2.rel = 'noopener';
+        live2.innerHTML = ICON.out + '<span>' + p.live2Label + '</span>';
+        links.appendChild(live2);
+      }
       aside.appendChild(links);
       inner.appendChild(aside);
 
