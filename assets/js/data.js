@@ -134,7 +134,7 @@ window.SITE = (function () {
         problem: 'Для запуска ИИ-сервиса приходится заново собирать подключение моделей, панель настроек и обновление кода на хостинге.',
         solution: 'Создаёте репозиторий из шаблона, даёте агенту ТЗ и загружаете на хостинг один pull.php. Внутри — Yandex, GenRouter и OpenRouter с резервированием, панель настроек, обратная связь через GitHub Issues, обновления и откат.',
         audience: 'Предприниматели и разработчики, запускающие ИИ-сервис на обычном PHP-хостинге.',
-        value: 'Новый сервис начинается с готовой основы; модели настраиваются в панели, а обновления ставятся без ручного копирования файлов.'
+        value: 'Основа для разработки: экономия токенов за счёт спек, панель настройки моделей, новые фичи заказываете прямо в своём интерфейсе, а обновления ставятся автоматически.'
       },
       en: {
         name: 'NeuroSaaS — AI service template for PHP hosting',
@@ -142,7 +142,7 @@ window.SITE = (function () {
         problem: 'Launching an AI service means rebuilding model connections, a settings panel and code updates on the hosting server.',
         solution: 'Create a repository from the template, give an agent your requirements and upload one pull.php file. It includes Yandex, GenRouter and OpenRouter with fallback, a settings panel, GitHub Issues feedback, updates and rollback.',
         audience: 'Entrepreneurs and developers launching an AI service on ordinary PHP hosting.',
-        value: 'Start from a working foundation, configure models in the panel and install updates without copying files by hand.'
+        value: 'A foundation for development: save tokens with specifications, configure models in a panel, request new features directly from your own interface and install updates automatically.'
       }
     },
     {
