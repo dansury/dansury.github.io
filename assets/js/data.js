@@ -22,7 +22,7 @@ window.SITE = (function () {
       'm1.b': 'Каждая функция проходит цикл: спека → план → задачи → реализация. Спека описывает поведение, а не пожелания, — поэтому в проект можно вернуться через год, не перечитывая код.',
       'm2.t': 'Продуктовый подход',
       'm2.b': 'Сначала сегмент и его задача, ценность, юнит-экономика, самое рискованное допущение. Функция, которая не двигает метрику, в план не попадает.',
-      'm3.t': 'Внедрение фич одной кнопкой (Experimental)',
+      'm3.t': 'Внедрение фич одной кнопкой',
       'm3.b': 'Пожелание пишется прямо в админке продукта, задача уходит в GitHub, изменение прогоняется в песочнице этого же продукта и через пять минут готово к работе. Не подошло — откат одним нажатием.',
       'work.title': 'Проекты',
       'work.lede': 'Часть репозиториев закрыта по условиям заказчика; доступ открываю по запросу.',
@@ -56,7 +56,7 @@ window.SITE = (function () {
       'm1.b': 'Every feature runs the loop: spec → plan → tasks → implementation. The spec describes behaviour, not wishes — so anyone can come back a year later without re-reading the code.',
       'm2.t': 'A product-first approach',
       'm2.b': 'First the segment and its job, the value, the unit economics, the riskiest assumption. A feature that moves no metric does not enter the plan.',
-      'm3.t': 'Features shipped by one button (Experimental)',
+      'm3.t': 'Features shipped by one button',
       'm3.b': 'The request is typed straight into the product’s admin panel, the task goes to GitHub, the change is tried in that product’s own sandbox and installs five minutes later with a button. Not right? One click rolls it back — the server always holds a specific branch.',
       'work.title': 'Work',
       'work.lede': 'Some repositories are private on the client’s terms; access on request.',
@@ -111,16 +111,38 @@ window.SITE = (function () {
         tag: 'ChatGPT и Claude в Hermes Agent без VPN',
         problem: 'В РФ для подключения топовых моделей нужны VPN и сервисы оплаты зарубежными картами с наценкой.',
         solution: 'Плагин подключает модели ChatGPT и Claude к Hermes Agent через GenRouter.ru и работает на российском сервере или компьютере без VPN.',
-        audience: 'Пользователи Hermes Agent и команды, желающие работать с флагманскими моделями без ограничений доступа.',
-        value: 'Флагманские модели можно использовать в работе без настройки VPN и оплаты через посредников.'
+        audience: 'Пользователи Hermes Agent и команды, желающие работать с API флагманских моделей без ограничений доступа и переплат за API.',
+        value: 'Оплата в России. Сложные агентские бизнес-задачи на локальном российском сервере решаются быстро и качественно.'
       },
       en: {
         name: 'Hermes GenRouter — flagship models in your agent without a VPN',
         tag: 'ChatGPT and Claude in Hermes Agent without a VPN',
         problem: 'In Russia, accessing leading models requires a VPN and payment services that charge a markup for using foreign cards.',
         solution: 'The plugin connects ChatGPT and Claude models to Hermes Agent through GenRouter.ru and runs on a Russian server or local computer without a VPN.',
-        audience: 'Hermes Agent users and teams who want to work with flagship models without access restrictions.',
-        value: 'Use flagship models for work without setting up a VPN or paying through intermediaries.'
+        audience: 'Hermes Agent users and teams who want to use flagship model APIs without access restrictions or API payment markups.',
+        value: 'Pay in Russia. Solve complex agentic business tasks quickly and effectively on a local Russian server.'
+      }
+    },
+    {
+      id: 'neurosaas', cat: ['ai', 'infra'], year: '2026', status: 'pub',
+      repo: 'https://github.com/dansury/neurosaas_template', priv: false,
+      live: null, liveLabel: null,
+      tech: ['PHP 8.1+ без Composer', 'Yandex Foundation Models', 'GenRouter', 'OpenRouter', 'GitHub API', 'pull.php'],
+      ru: {
+        name: 'NeuroSaaS — шаблон ИИ-сервиса для PHP-хостинга',
+        tag: 'Свой репозиторий, ИИ-подключения и установка одним файлом',
+        problem: 'Для запуска ИИ-сервиса приходится заново собирать подключение моделей, панель настроек и обновление кода на хостинге.',
+        solution: 'Создаёте репозиторий из шаблона, даёте агенту ТЗ и загружаете на хостинг один pull.php. Внутри — Yandex, GenRouter и OpenRouter с резервированием, панель настроек, обратная связь через GitHub Issues, обновления и откат.',
+        audience: 'Предприниматели и разработчики, запускающие ИИ-сервис на обычном PHP-хостинге.',
+        value: 'Новый сервис начинается с готовой основы; модели настраиваются в панели, а обновления ставятся без ручного копирования файлов.'
+      },
+      en: {
+        name: 'NeuroSaaS — AI service template for PHP hosting',
+        tag: 'Your own repository, AI connections and a single-file installer',
+        problem: 'Launching an AI service means rebuilding model connections, a settings panel and code updates on the hosting server.',
+        solution: 'Create a repository from the template, give an agent your requirements and upload one pull.php file. It includes Yandex, GenRouter and OpenRouter with fallback, a settings panel, GitHub Issues feedback, updates and rollback.',
+        audience: 'Entrepreneurs and developers launching an AI service on ordinary PHP hosting.',
+        value: 'Start from a working foundation, configure models in the panel and install updates without copying files by hand.'
       }
     },
     {
@@ -325,29 +347,6 @@ window.SITE = (function () {
         solution: '65 checks with a grade and a fix plan, the maximum bid derived from unit economics, a campaign built from one JSON idempotently, optimisation rules and offline CRM sales pushed into analytics. Sandbox and dry-run are on by default.',
         audience: 'Ad-account owners and agencies.',
         value: 'An audit takes minutes instead of days, optimisation targets revenue, and nothing reaches the live account without confirmation.'
-      }
-    },
-    {
-      id: 'toolkit', cat: ['infra'], year: '2025 — 2026', status: 'pub',
-      repo: 'https://github.com/dansury/site_yacloud_openrouter', priv: false,
-      pages: 'https://dansury.github.io/site_yacloud_openrouter/',
-      live: null, liveLabel: null,
-      tech: ['PHP без Composer', 'cURL', 'SQLite', 'OpenRouter', 'Yandex Foundation Models / Vision'],
-      ru: {
-        name: 'LLM-тулкит для PHP-хостинга',
-        tag: 'Нейросети, OCR и разбор документов на обычном shared-хостинге',
-        problem: 'Надо внедрить нейросети на дешёвом shared-хостинге.',
-        solution: 'Два провайдера — Yandex Cloud и OpenRouter — за одним интерфейсом с цепочкой фолбэков, разбор PDF и DOCX с деградацией в vision-модели и OCR, SMTP и настройки из админки. Нужны только cURL, SQLite и ZIP.',
-        audience: 'Владельцы сервисов на обычном PHP-хостинге.',
-        value: 'Новый ИИ-сервис стартует с рабочей инфраструктуры, а смена модели или провайдера — настройка, а не релиз.'
-      },
-      en: {
-        name: 'LLM toolkit for PHP hosting',
-        tag: 'AI, OCR and document parsing on ordinary shared hosting',
-        problem: 'AI has to run on cheap shared hosting.',
-        solution: 'Two providers — Yandex Cloud and OpenRouter — behind one interface with a fallback chain, PDF and DOCX parsing degrading into vision models and OCR, SMTP and settings from an admin page. Only cURL, SQLite and ZIP required.',
-        audience: 'Owners of services on ordinary PHP hosting.',
-        value: 'A new AI service starts from working infrastructure, and switching model or provider is a setting rather than a release.'
       }
     },
     {
