@@ -108,19 +108,19 @@ window.SITE = (function () {
       tech: ['Python 3.11+', 'Hermes Agent', 'GenRouter API', 'CLI', 'GitHub Actions'],
       ru: {
         name: 'Hermes GenRouter — флагманские модели в агенте без VPN',
-        tag: 'Модели, API-ключи и баланс GenRouter внутри Hermes Agent',
-        problem: 'Пользователь хочет работать с моделями в привычном агенте, но вынужден разбираться с доступом, оплатой, ключами и расходами.',
-        solution: 'Плагины подключают модели GenRouter к Hermes Agent. Выбор модели, настройка ключей и просмотр баланса и расходов доступны прямо из агента.',
-        audience: 'Пользователи Hermes Agent и команды, подключающие модели через GenRouter.',
-        value: 'Настройка провайдера, выбор модели и контроль расходов доступны из одного рабочего инструмента; отдельные ключи позволяют учитывать приложения раздельно.'
+        tag: 'ChatGPT и Claude в Hermes Agent без VPN',
+        problem: 'В РФ для подключения топовых моделей нужны VPN и сервисы оплаты зарубежными картами с наценкой.',
+        solution: 'Плагин подключает модели ChatGPT и Claude к Hermes Agent через GenRouter.ru и работает на российском сервере или компьютере без VPN.',
+        audience: 'Пользователи Hermes Agent и команды, желающие работать с флагманскими моделями без ограничений доступа.',
+        value: 'Флагманские модели можно использовать в работе без настройки VPN и оплаты через посредников.'
       },
       en: {
         name: 'Hermes GenRouter — flagship models in your agent without a VPN',
-        tag: 'GenRouter models, API keys and balances inside Hermes Agent',
-        problem: 'Users want to work with models in their usual agent, but have to figure out access, payments, API keys and spending.',
-        solution: 'The plugins connect GenRouter models to Hermes Agent. Model selection, key setup, balances and spending are available directly from the agent.',
-        audience: 'Hermes Agent users and teams connecting models through GenRouter.',
-        value: 'Provider setup, model selection and spending visibility share one working tool; separate keys help track applications individually.'
+        tag: 'ChatGPT and Claude in Hermes Agent without a VPN',
+        problem: 'In Russia, accessing leading models requires a VPN and payment services that charge a markup for using foreign cards.',
+        solution: 'The plugin connects ChatGPT and Claude models to Hermes Agent through GenRouter.ru and runs on a Russian server or local computer without a VPN.',
+        audience: 'Hermes Agent users and teams who want to work with flagship models without access restrictions.',
+        value: 'Use flagship models for work without setting up a VPN or paying through intermediaries.'
       }
     },
     {
