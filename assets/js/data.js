@@ -107,18 +107,18 @@ window.SITE = (function () {
       live: null, liveLabel: null,
       tech: ['Python 3.11+', 'Hermes Agent', 'GenRouter API', 'CLI', 'GitHub Actions'],
       ru: {
-        name: 'Hermes GenRouter — плагины для ИИ-агента',
+        name: 'Hermes GenRouter — флагманские модели в агенте без VPN',
         tag: 'Модели, API-ключи и баланс GenRouter внутри Hermes Agent',
-        problem: 'Для подключения моделей и управления аккаунтом GenRouter пользователю Hermes приходилось вручную настраивать провайдера и переключаться между агентом и личным кабинетом.',
-        solution: 'Плагин добавляет GenRouter в выбор провайдеров Hermes и загружает актуальный каталог моделей. Второй плагин даёт команды для настройки аккаунта, управления отдельными API-ключами и просмотра баланса и расходов; в чате доступны команды и инструменты чтения данных.',
+        problem: 'Пользователь хочет работать с моделями в привычном агенте, но вынужден разбираться с доступом, оплатой, ключами и расходами.',
+        solution: 'Плагины подключают модели GenRouter к Hermes Agent. Выбор модели, настройка ключей и просмотр баланса и расходов доступны прямо из агента.',
         audience: 'Пользователи Hermes Agent и команды, подключающие модели через GenRouter.',
         value: 'Настройка провайдера, выбор модели и контроль расходов доступны из одного рабочего инструмента; отдельные ключи позволяют учитывать приложения раздельно.'
       },
       en: {
-        name: 'Hermes GenRouter — AI agent plugins',
+        name: 'Hermes GenRouter — flagship models in your agent without a VPN',
         tag: 'GenRouter models, API keys and balances inside Hermes Agent',
-        problem: 'Connecting models and managing a GenRouter account required Hermes users to configure a provider manually and switch between the agent and an account dashboard.',
-        solution: 'A provider plugin adds GenRouter to the Hermes vendor picker and loads the current model catalogue. A companion plugin offers account setup, separate API key management, balances and spending via the CLI, with read-only commands and tools in chat.',
+        problem: 'Users want to work with models in their usual agent, but have to figure out access, payments, API keys and spending.',
+        solution: 'The plugins connect GenRouter models to Hermes Agent. Model selection, key setup, balances and spending are available directly from the agent.',
         audience: 'Hermes Agent users and teams connecting models through GenRouter.',
         value: 'Provider setup, model selection and spending visibility share one working tool; separate keys help track applications individually.'
       }
