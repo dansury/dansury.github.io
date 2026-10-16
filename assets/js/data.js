@@ -9,7 +9,7 @@ window.SITE = (function () {
       'nav.method': 'Метод', 'nav.work': 'Проекты', 'nav.stack': 'Стек', 'nav.contact': 'Контакт',
       'hero.eyebrow': 'Продуктовая разработка · ИИ-сервисы · 2024—2026',
       'hero.t1': 'Проектирую', 'hero.t2': 'и собираю', 'hero.t3': 'продукты целиком',
-      'hero.lede': 'От разговора с заказчиком до работающего сервиса в его контуре. Требования, спецификация, код, деплой, сопровождение. Одиннадцать продуктов: ИИ-боты, веб-сервисы, модуль для 1С-Битрикс, инфраструктура автодеплоя.',
+      'hero.lede': 'От разговора с заказчиком до работающего сервиса в его контуре. Требования, спецификация, код, деплой, сопровождение. Двенадцать продуктов: ИИ-боты, веб-сервисы, модуль для 1С-Битрикс, инфраструктура автодеплоя.',
       'hero.cta1': 'Смотреть проекты', 'hero.cta2': 'LinkedIn',
       'facts.k1': 'продуктов в портфолио',
       'facts.k2': 'операционная рутина: максимальное сокращение',
@@ -34,7 +34,7 @@ window.SITE = (function () {
       'contact.write': 'Напишите — отвечу сегодня.',
       'p.problem': 'Проблема', 'p.solution': 'Решение', 'p.audience': 'Для кого', 'p.value': 'Что даёт бизнесу',
       'p.stack': 'Технологии',
-      'p.repo': 'Репозиторий', 'p.repoPrivate': 'Репозиторий (закрыт)',
+      'p.repo': 'Репозиторий', 'p.repoPrivate': 'Репозиторий (закрыт)', 'p.private': 'код закрыт',
       'p.pages': 'Страница проекта',
       'st.prod': 'в продакшене', 'st.beta': 'открытая бета', 'st.closedBeta': 'закрытая бета', 'st.pub': 'опубликовано'
     },
@@ -43,7 +43,7 @@ window.SITE = (function () {
       'nav.method': 'Method', 'nav.work': 'Work', 'nav.stack': 'Stack', 'nav.contact': 'Contact',
       'hero.eyebrow': 'Product engineering · AI services · 2024—2026',
       'hero.t1': 'I design', 'hero.t2': 'and build', 'hero.t3': 'whole products',
-      'hero.lede': 'From the first conversation with a client to a service running inside their own setup. Requirements, specification, code, deployment, support. Eleven products: AI bots, web services, a 1C-Bitrix module, deployment infrastructure.',
+      'hero.lede': 'From the first conversation with a client to a service running inside their own setup. Requirements, specification, code, deployment, support. Twelve products: AI bots, web services, a 1C-Bitrix module, deployment infrastructure.',
       'hero.cta1': 'See the work', 'hero.cta2': 'LinkedIn',
       'facts.k1': 'products shipped',
       'facts.k2': 'operational routine: largest cut achieved',
@@ -68,16 +68,16 @@ window.SITE = (function () {
       'contact.write': 'Write to me — you will get an answer today.',
       'p.problem': 'Problem', 'p.solution': 'Solution', 'p.audience': 'Who it is for', 'p.value': 'Business outcome',
       'p.stack': 'Tech',
-      'p.repo': 'Repository', 'p.repoPrivate': 'Repository (private)',
+      'p.repo': 'Repository', 'p.repoPrivate': 'Repository (private)', 'p.private': 'private code',
       'p.pages': 'Project page',
       'st.prod': 'in production', 'st.beta': 'open beta', 'st.closedBeta': 'closed beta', 'st.pub': 'published'
     }
   };
 
   var facts = {
-    ru: [{ v: '11', k: 'facts.k1' }, { v: '5 ч → 1 мин', k: 'facts.k2' },
+    ru: [{ v: '12', k: 'facts.k1' }, { v: '5 ч → 1 мин', k: 'facts.k2' },
          { v: '5 мин', k: 'facts.k3' }, { v: '24', k: 'facts.k4' }],
-    en: [{ v: '11', k: 'facts.k1' }, { v: '6 h → 1 min', k: 'facts.k2' },
+    en: [{ v: '12', k: 'facts.k1' }, { v: '6 h → 1 min', k: 'facts.k2' },
          { v: '5 min', k: 'facts.k3' }, { v: '24', k: 'facts.k4' }]
   };
 
@@ -101,6 +101,28 @@ window.SITE = (function () {
   };
 
   var projects = [
+    {
+      id: 'hermes-genrouter', cat: ['ai', 'infra'], year: '2026', status: 'pub',
+      repo: 'https://github.com/dansury/hermes-genrouter-plugin', priv: false,
+      live: null, liveLabel: null,
+      tech: ['Python 3.11+', 'Hermes Agent', 'GenRouter API', 'CLI', 'GitHub Actions'],
+      ru: {
+        name: 'Hermes GenRouter — плагины для ИИ-агента',
+        tag: 'Модели, API-ключи и баланс GenRouter внутри Hermes Agent',
+        problem: 'Для подключения моделей и управления аккаунтом GenRouter пользователю Hermes приходилось вручную настраивать провайдера и переключаться между агентом и личным кабинетом.',
+        solution: 'Плагин добавляет GenRouter в выбор провайдеров Hermes и загружает актуальный каталог моделей. Второй плагин даёт команды для настройки аккаунта, управления отдельными API-ключами и просмотра баланса и расходов; в чате доступны команды и инструменты чтения данных.',
+        audience: 'Пользователи Hermes Agent и команды, подключающие модели через GenRouter.',
+        value: 'Настройка провайдера, выбор модели и контроль расходов доступны из одного рабочего инструмента; отдельные ключи позволяют учитывать приложения раздельно.'
+      },
+      en: {
+        name: 'Hermes GenRouter — AI agent plugins',
+        tag: 'GenRouter models, API keys and balances inside Hermes Agent',
+        problem: 'Connecting models and managing a GenRouter account required Hermes users to configure a provider manually and switch between the agent and an account dashboard.',
+        solution: 'A provider plugin adds GenRouter to the Hermes vendor picker and loads the current model catalogue. A companion plugin offers account setup, separate API key management, balances and spending via the CLI, with read-only commands and tools in chat.',
+        audience: 'Hermes Agent users and teams connecting models through GenRouter.',
+        value: 'Provider setup, model selection and spending visibility share one working tool; separate keys help track applications individually.'
+      }
+    },
     {
       id: 'kp', cat: ['ai', 'b2b'], year: '2026', status: 'prod',
       repo: 'https://github.com/dansury/kp-atlant', priv: true,

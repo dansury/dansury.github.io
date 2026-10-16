@@ -58,6 +58,7 @@
       var stKey = p.status === 'prod' ? 'st.prod' : p.status === 'beta' ? 'st.beta' : p.status === 'closedBeta' ? 'st.closedBeta' : 'st.pub';
       var badge = el('span', 'badge ' + (p.status === 'prod' ? 'badge--live' : ''), t(stKey));
       meta.appendChild(badge);
+      if (p.priv) meta.appendChild(el('span', 'badge badge--closed', t('p.private')));
       meta.appendChild(el('span', 'project__year', p.year));
       btn.appendChild(meta);
       btn.appendChild(el('span', 'project__toggle'));
