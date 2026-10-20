@@ -154,7 +154,19 @@
   function anRow(key, text) {
     var r = el('div', 'an');
     r.appendChild(el('span', 'an__k', t(key)));
-    r.appendChild(el('p', 'an__v', text));
+    var value = el('p', 'an__v');
+    String(text || '').split(/(GenRouter(?:\.ru)?)/gi).forEach(function (part) {
+      if (/^GenRouter(?:\.ru)?$/i.test(part)) {
+        var link = el('a', '', part);
+        link.href = 'https://genrouter.ru/?ref=d97a170843';
+        link.target = '_blank';
+        link.rel = 'noopener noreferrer';
+        value.appendChild(link);
+      } else {
+        value.appendChild(document.createTextNode(part));
+      }
+    });
+    r.appendChild(value);
     return r;
   }
 
