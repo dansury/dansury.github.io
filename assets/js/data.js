@@ -32,6 +32,7 @@ window.SITE = (function () {
       'contact.title': 'Обсудим ваш продукт',
       'contact.lede': 'Возьмусь за продукт целиком: разберу задачу как продуктовую, напишу спецификацию, соберу, разверну и передам с документацией. Или подключусь к существующей системе — там, где нужно навести порядок.',
       'contact.write': 'Напишите — отвечу сегодня.',
+      'contact.channel': 'Telegram-канал · @no_illusions',
       'p.problem': 'Проблема', 'p.solution': 'Решение', 'p.audience': 'Для кого', 'p.value': 'Что даёт бизнесу',
       'p.stack': 'Технологии',
       'p.repo': 'Репозиторий', 'p.repoPrivate': 'Репозиторий (закрыт)', 'p.private': 'код закрыт',
@@ -66,6 +67,7 @@ window.SITE = (function () {
       'contact.title': 'Let’s talk about your product',
       'contact.lede': 'I can take a product end to end: frame the task as a product problem, write the specification, build it, deploy it and hand it over documented. Or join an existing system where things need to be put in order.',
       'contact.write': 'Write to me — you will get an answer today.',
+      'contact.channel': 'Telegram channel · @no_illusions',
       'p.problem': 'Problem', 'p.solution': 'Solution', 'p.audience': 'Who it is for', 'p.value': 'Business outcome',
       'p.stack': 'Tech',
       'p.repo': 'Repository', 'p.repoPrivate': 'Repository (private)', 'p.private': 'private code',
@@ -376,3 +378,4 @@ window.SITE = (function () {
 
   return { i18n: i18n, facts: facts, stack: stack, projects: projects };
 })();
+
