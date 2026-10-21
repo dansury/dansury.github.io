@@ -130,6 +130,17 @@
         an.appendChild(anRow(row[0], row[1]));
       });
       inner.appendChild(an);
+      if (p.workflowImage) {
+        var figure = el('figure', 'project__workflow');
+        var diagram = document.createElement('img');
+        diagram.src = p.workflowImage;
+        diagram.alt = c.workflow || '';
+        diagram.width = 3228; diagram.height = 1620;
+        diagram.loading = 'lazy'; diagram.decoding = 'async';
+        figure.appendChild(diagram);
+        figure.appendChild(el('figcaption', null, c.workflow || ''));
+        inner.appendChild(figure);
+      }
 
       /* what it is worth — inverted and full width, because this part sells */
       var val = el('div', 'analysis analysis--light');

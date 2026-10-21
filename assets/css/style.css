@@ -694,3 +694,8 @@ main{ position:relative; z-index:3 }
   #phi-canvas,.vignette,.grain,.rail,.nav,.scroll-cue{ display:none }
   body{ background:#fff; color:#000 }
 }
+
+/* The supplied transparent workflow remains readable in either color scheme. */
+.project__workflow { grid-column:1 / -1; min-width:0; margin:0; padding:13px; background:#fff; color:#171717; }
+.project__workflow img { display:block; width:100%; max-width:100%; height:auto; }
+.project__workflow figcaption { margin-top:13px; font-size:13px; line-height:1.6; }

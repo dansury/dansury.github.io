@@ -127,11 +127,13 @@ window.SITE = (function () {
     },
     {
       id: 'neurosaas', cat: ['ai', 'infra'], year: '2026', status: 'pub',
+      workflowImage: 'assets/img/neurosaas-workflow.png',
       repo: 'https://github.com/dansury/neurosaas_template', priv: false,
       live: null, liveLabel: null,
       tech: ['PHP 8.1+ без Composer', 'Yandex Foundation Models', 'GenRouter', 'OpenRouter', 'GitHub API', 'pull.php'],
       ru: {
         name: 'NeuroSaaS — шаблон ИИ-сервиса для PHP-хостинга',
+        workflow: 'Цикл доработки: «Заказать доработку» → GitHub Issues → запуск ИИ-агента и слияние PR → код на GitHub → обновление сервиса через pull.php.',
         tag: 'Свой репозиторий, ИИ-подключения и установка одним файлом',
         problem: 'Для запуска ИИ-сервиса много времени уходит на подключение моделей, а заливать на хостинг обновленные файлы часто приходится вручную.',
         solution: 'Создаёте репозиторий из шаблона, даёте агенту ТЗ, а на хостинг загружаете один pull.php. Внутри — OpenRouter, Yandex и GenRouter, панель настроек, отправка Issues прямо из интерфейса, автообновления и откат.',
@@ -140,6 +142,7 @@ window.SITE = (function () {
       },
       en: {
         name: 'NeuroSaaS — AI service template for PHP hosting',
+        workflow: 'Improvement cycle: request a change → GitHub Issues → run an AI agent and merge its PR → GitHub code → update the service through pull.php.',
         tag: 'Your own repository, AI connections and a single-file installer',
         problem: 'Launching an AI service means rebuilding model connections, a settings panel and code updates on the hosting server.',
         solution: 'Create a repository from the template, give an agent your requirements and upload one pull.php file. It includes Yandex, GenRouter and OpenRouter with fallback, a settings panel, GitHub Issues feedback, updates and rollback.',
